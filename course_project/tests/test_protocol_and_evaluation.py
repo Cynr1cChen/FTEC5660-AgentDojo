@@ -99,6 +99,25 @@ def test_budget_stops_before_any_network_request():
     assert client.requests == []
 
 
+def test_official_benchmark_entry_persists_full_trace(tmp_path):
+    import json
+    from agentdojo.benchmark import run_task_without_injection_tasks
+    from agentdojo.logging import OutputLogger
+
+    client = FakeClient([completion("This is an offline trace test.")])
+    config = load_config()
+    llm = DeepSeekLLM(client, "deepseek-flash", config)
+    pipeline = build_pipeline(llm, "none", config["max_tool_rounds"])
+    suite = get_suite("v1.2.2", "banking")
+    with OutputLogger(str(tmp_path)):
+        run_task_without_injection_tasks(
+            suite, pipeline, suite.get_user_task_by_id("user_task_0"), tmp_path, True, "v1.2.2")
+    trace = json.loads((tmp_path / "deepseek-flash/banking/user_task_0/none/none.json").read_text())
+    assert [message["role"] for message in trace["messages"]] == ["system", "user", "assistant"]
+    assert trace["messages"][-1]["content"][0]["content"] == "This is an offline trace test."
+    assert len(client.requests) == 1
+
+
 def test_incomplete_episode_is_not_counted_as_a_successful_defense():
     rows = [
         {"defense": "none", "phase": "clean", "status": "completed",

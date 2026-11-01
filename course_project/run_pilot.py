@@ -16,7 +16,7 @@ from agentdojo.agent_pipeline.agent_pipeline import AgentPipeline, PipelineConfi
 from agentdojo.agent_pipeline.tool_execution import ToolsExecutionLoop
 from agentdojo.attacks import load_attack
 from agentdojo.benchmark import run_task_with_injection_tasks, run_task_without_injection_tasks
-from agentdojo.logging import NullLogger
+from agentdojo.logging import OutputLogger
 from agentdojo.models import MODEL_NAMES
 from agentdojo.task_suite.load_suites import get_suite
 
@@ -121,8 +121,7 @@ def run(config_path):
         if not halted:
             llm.context = {key: row[key] for key in ("phase", "task_id", "injection_id", "trial", "defense")}
             try:
-                with NullLogger() as logger:
-                    logger.logdir = str(output / f"trial_{trial}" / "traces")
+                with OutputLogger(str(output / f"trial_{trial}" / "traces")):
                     if phase != "attacked":
                         task = (suite.get_injection_task_by_id(task_id) if phase == "attack_capability"
                                 else suite.get_user_task_by_id(task_id))
