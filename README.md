@@ -14,6 +14,11 @@
 [Read Paper](https://arxiv.org/abs/2406.13352) | [Inspect Results](https://agentdojo.spylab.ai/results/)
 </center>
 
+## FTEC5660 course project
+
+See [the course project guide](course_project/README.md) for the pinned setup,
+DeepSeek baseline, development pilot, and experimental plan.
+
 ## Quickstart
 
 ```bash
