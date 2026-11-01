@@ -1,6 +1,6 @@
 # FTEC5660: AgentDojo reproducibility project
 
-选题已确定为 AgentDojo。当前处于环境准备与开发集试跑阶段，尚未获得真实 DeepSeek 实验结果。
+选题已确定为 AgentDojo。当前已完成环境准备和 6 次真实 DeepSeek 开发运行，用于费用校准；尚未完成正式基线或防御评测。费用见 [COST_ESTIMATE.md](COST_ESTIMATE.md)。
 
 ## 当前范围
 

@@ -1,0 +1,17 @@
+{
+  "benchmark_version": "v1.2.2",
+  "suite": "banking",
+  "user_tasks": ["user_task_0"],
+  "injection_tasks": ["injection_task_7"],
+  "attack": "tool_knowledge",
+  "defenses": ["none"],
+  "trials": 1,
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_output_tokens": 2048,
+  "max_tool_rounds": 15,
+  "max_api_calls": 12,
+  "run_budget_cny": 0.20,
+  "attack_capability_controls": false,
+  "purpose": "cost calibration only: one clean and one attacked development episode, not final efficacy evidence"
+}

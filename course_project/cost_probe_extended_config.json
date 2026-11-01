@@ -1,0 +1,17 @@
+{
+  "benchmark_version": "v1.2.2",
+  "suite": "banking",
+  "user_tasks": ["user_task_1", "user_task_13"],
+  "injection_tasks": ["injection_task_7"],
+  "attack": "tool_knowledge",
+  "defenses": ["none"],
+  "trials": 1,
+  "temperature": 0.0,
+  "thinking": "disabled",
+  "max_output_tokens": 2048,
+  "max_tool_rounds": 15,
+  "max_api_calls": 20,
+  "run_budget_cny": 0.17,
+  "attack_capability_controls": false,
+  "purpose": "additional cost calibration: transaction-history and account-update development tasks; combined estimated cap with first completed probe is below CNY 0.20"
+}
