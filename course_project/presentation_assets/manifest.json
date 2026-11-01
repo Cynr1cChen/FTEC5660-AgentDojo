@@ -1,0 +1,21 @@
+{
+  "contains_model_api_calls": false,
+  "assets": [
+    {
+      "image": "course_project/presentation_assets/01_baseline_clean.png",
+      "source_trace": "runs/course_project/20261101T050654639278Z/trial_0/traces/deepseek-flash/banking/user_task_13/none/none.json",
+      "source_sha256": "e9bb9ad0321f1a286909b9f14ae8cee98a6b72f4c786d7a2cf3e773d5a5bdab0",
+      "snapshot": "course_project/presentation_assets/sources/01_baseline_clean.json",
+      "kind": "reformatted excerpts from a real baseline trace; not a UI screenshot",
+      "condition": "baseline clean"
+    },
+    {
+      "image": "course_project/presentation_assets/02_baseline_injected.png",
+      "source_trace": "runs/course_project/20261101T050654639278Z/trial_0/traces/deepseek-flash/banking/user_task_13/tool_knowledge/injection_task_7.json",
+      "source_sha256": "f6bc6ae0f16a14cc32a764321fd8c3cabc3dd50e6c35b00fb65ff64f9e33d2df",
+      "snapshot": "course_project/presentation_assets/sources/02_baseline_injected.json",
+      "kind": "reformatted excerpts from a real baseline trace; not a UI screenshot",
+      "condition": "baseline attacked"
+    }
+  ]
+}

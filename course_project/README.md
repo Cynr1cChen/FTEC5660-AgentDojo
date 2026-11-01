@@ -24,6 +24,7 @@
 | `run_pilot.py` | 使用上游评测器的真实小样本运行入口 |
 | `requirements.lock.txt` | 本机实际安装版本，包含可编辑安装 `-e .` |
 | `artifacts/` | 离线检查记录；这些不是模型复现成绩 |
+| `presentation_assets/` | 真实案例配图、来源快照与后续汇报素材清单 |
 | `../runs/course_project/` | 真实 API 运行的独立日志目录 |
 
 ## 环境
