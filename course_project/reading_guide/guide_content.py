@@ -34,7 +34,7 @@ def page(part, title, subtitle, *items, refs=()):
 
 
 INTRO_AND_PAPER_PAGES = [
-page("导读", "AgentDojo 论文与原仓库详解", "", 
+page("导读", "AgentDojo 论文与原仓库详解", "",
     ("box", "**读完后应该能回答：** Agent 在做什么？攻击者能改哪里？评测究竟判什么？论文结论是怎样得到的？对应代码在哪里？我们自己的工作做到哪一步？", "teal"),
     ("p", "讲解依据为 NeurIPS 2024 Datasets and Benchmarks Track 正式论文，以及本机已克隆的官方仓库快照。论文、仓库后续版本、我们的课程改动会分别标注。"),
     ("p", "建议先读导读和论文部分，再沿第二部分的一次执行链理解仓库。英文术语首次出现时解释；代码只展示影响理解的片段。最后给出复现方法、术语表和自测题。"),
