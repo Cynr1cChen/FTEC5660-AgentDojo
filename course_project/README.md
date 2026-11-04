@@ -2,6 +2,8 @@
 
 选题已确定为 AgentDojo。当前已完成环境准备和 6 次真实 DeepSeek 开发运行，用于费用校准；尚未完成正式基线或防御评测。费用见 [COST_ESTIMATE.md](COST_ESTIMATE.md)。
 
+理解项目可先读 [AgentDojo 论文与仓库详解（35 页 PDF）](output/pdf/AgentDojo_论文与仓库详解.pdf)：分别讲解论文、固定版本的官方实现和当前课程工作，附流程图、真实日志案例及可点击来源。这是阅读指南，不是课程最终报告；制作过程没有调用模型 API。
+
 ## 当前范围
 
 - 主场景：banking；benchmark 显式固定为 `v1.2.2`。
@@ -25,6 +27,8 @@
 | `requirements.lock.txt` | 本机实际安装版本，包含可编辑安装 `-e .` |
 | `artifacts/` | 离线检查记录；这些不是模型复现成绩 |
 | `presentation_assets/` | 真实案例配图、来源快照与后续汇报素材清单 |
+| `output/pdf/` | 供阅读的 PDF 成品 |
+| `reading_guide/` | 阅读指南的中文内容与生成脚本 |
 | `../runs/course_project/` | 真实 API 运行的独立日志目录 |
 
 ## 环境
