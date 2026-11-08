@@ -2,7 +2,7 @@
 
 选题已确定为 AgentDojo。当前已完成环境准备和 6 次真实 DeepSeek 开发运行，用于费用校准；尚未完成正式基线或防御评测。费用见 [COST_ESTIMATE.md](COST_ESTIMATE.md)。
 
-理解项目可先读 [AgentDojo 论文与仓库详解（35 页 PDF）](output/pdf/AgentDojo_论文与仓库详解.pdf)：分别讲解论文、固定版本的官方实现和当前课程工作，附流程图、真实日志案例及可点击来源。这是阅读指南，不是课程最终报告；制作过程没有调用模型 API。
+理解项目建议先读 [AgentDojo 通俗讲解修订版（42 页 PDF）](output/pdf/AgentDojo_通俗讲解修订版.pdf)：以一次银行地址更新贯穿全文，先讲事情经过，再解释论文、真实日志与对应代码，补充例子、图解和误区。旧的 [技术阅读指南（35 页 PDF）](output/pdf/AgentDojo_论文与仓库详解.pdf) 仍保留供查阅。这些是学习资料；制作过程没有调用模型 API。
 
 ## 当前范围
 
