@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "isolated_directory": true,
+  "uses_existing_dependencies": true,
+  "fresh_dependency_install": false,
+  "phases": [
+    "stage1",
+    "supplement",
+    "comparison_dev",
+    "formal",
+    "date_followup"
+  ],
+  "all_requests_and_states_replayed": true,
+  "formal_aggregates_identical": true,
+  "archive_sha256": "50103b0582fe158d5c35f835f947cf3420771d6a1466c0fa1244d8becc79cabe"
+}

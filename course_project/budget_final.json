@@ -1,0 +1,56 @@
+{
+  "cohorts": [
+    {
+      "phase": "stage1",
+      "source": "runs/stage1/20261112T162553Z/audit.json",
+      "episodes": 38,
+      "requests": 101,
+      "known_offpeak_cny": 0.07699487999999996,
+      "peak_upper_cny": 0.4845320000000002,
+      "all_offpeak": true
+    },
+    {
+      "phase": "supplement",
+      "source": "runs/supplement/20261112T163409Z/audit.json",
+      "episodes": 18,
+      "requests": 59,
+      "known_offpeak_cny": 0.047380679999999994,
+      "peak_upper_cny": 0.29866799999999993,
+      "all_offpeak": true
+    },
+    {
+      "phase": "comparison_dev",
+      "source": "runs/comparison_dev/20261112T163834Z/audit.json",
+      "episodes": 27,
+      "requests": 111,
+      "known_offpeak_cny": 0.07812198000000001,
+      "peak_upper_cny": 0.5307000000000003,
+      "all_offpeak": true
+    },
+    {
+      "phase": "formal",
+      "source": "runs/formal/20261112T164340Z/audit.json",
+      "episodes": 162,
+      "requests": 488,
+      "known_offpeak_cny": 0.42212955999999996,
+      "peak_upper_cny": 2.6974939999999976,
+      "all_offpeak": true
+    },
+    {
+      "phase": "date_followup",
+      "source": "runs/date_followup/20261112T165614Z/audit.json",
+      "episodes": 81,
+      "requests": 257,
+      "known_offpeak_cny": 0.23746912000000014,
+      "peak_upper_cny": 1.5140439999999995,
+      "all_offpeak": true
+    }
+  ],
+  "total_new_episodes": 326,
+  "total_new_requests": 1016,
+  "total_new_known_offpeak_cny": 0.86209622,
+  "total_new_peak_upper_cny": 5.525437999999997,
+  "project_conservative_upper_cny": 76.48274380000001,
+  "includes_prior_amem_accounting": true,
+  "provider_balance_not_queried": true
+}
