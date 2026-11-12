@@ -1,0 +1,26 @@
+{
+  "development_only": true,
+  "run_id": "20261112T162553Z",
+  "completed_episodes": 38,
+  "requests": 101,
+  "offline_replayed_episodes": 38,
+  "secrets_scan_passed": true,
+  "evidence_zip_sha256": "8530f20024f2f52b10a93b7060168378470c6f7b6ae683d68612a6875f261772",
+  "evidence_zip_bytes": 650377,
+  "protocol_sha256": "2859423262bd5030070aca66d585c415509be4ddcaee534c8f147effdd80111b",
+  "audit_sha256": "d16b6bfc74e515e04b25c3dc5d5ab23fca5741ce7ff681a95726d9f81c8368bf",
+  "environment": "relocated existing venv; not clean reinstall",
+  "dependency_packages_checked": 75,
+  "existing_tests_passed": 32,
+  "engineering_gate": "pass",
+  "main_defense_effectiveness_evaluation_gate": "not_ready_zero_successful_attacks_and_utility_failures_without_proposed_write",
+  "formal_candidate_ids": [
+    4,
+    7,
+    11,
+    12,
+    14,
+    15
+  ],
+  "primary_modification_implemented": false
+}
