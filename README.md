@@ -1,3 +1,11 @@
+# FTEC5660 student reproduction study
+
+Current report, results, installation and saved-evidence verification: **[course_project/README.md](course_project/README.md)**.
+
+The original author documentation follows.
+
+---
+
 <center>
 
 # AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents

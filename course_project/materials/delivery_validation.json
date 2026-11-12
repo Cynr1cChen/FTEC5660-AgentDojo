@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "report_pages": 10,
+  "slides": 14,
+  "script_pages": 14,
+  "chart_data_agrees_with_recorded_results": true,
+  "native_charts": 3,
+  "embedded_chart_workbooks": 3,
+  "speaker_notes_slides": 14,
+  "blank_identity_fields": true,
+  "native_powerpoint_opening_verified": false,
+  "artifacts": {
+    "output/pdf/FTEC5660_AgentDojo_Report.pdf": {
+      "bytes": 318072,
+      "sha256": "18b125453358aa893f97a6251ffdbf918e02574eefe156e108453670992f8e05"
+    },
+    "output/pptx/FTEC5660_AgentDojo_Presentation.pptx": {
+      "bytes": 98381,
+      "sha256": "de1da3d751cbcd1ca91a664e0361eddc8d58dc49da62eecded6c794e67508f4b"
+    },
+    "output/pdf/FTEC5660_AgentDojo_中文讲解稿.pdf": {
+      "bytes": 1668124,
+      "sha256": "2cacb99845a8c412c6fdb58c87e4b25b260bbb967bf85a4f30e3a7d96ba1b56d"
+    }
+  },
+  "research_sources": {
+    "course_project/formal/results.json": "6d2b1634e7bbcab757c4702cd00890a6b7e87aa53282f7bbeda7bcf6fb9c2cd6",
+    "course_project/date_followup/results.json": "b76e72c15a2e215ac38801370ee1fbd847b10bb6f3ea688bd0e184717ac737ac",
+    "course_project/formal/recovery_diagnosis.json": "0ee2439d401269c26f4982ccbea3b480494b59ba15e5576fb928ce6bb0e7d431",
+    "course_project/evidence/verification.json": "1371624a0b0a2a7fbc54adbf9ff780304c554850302f027c3c9eed3fbe3dea35"
+  },
+  "pending": [
+    "Student review and identity fields",
+    "GitHub publication",
+    "Actual Zoom recording and accessible link",
+    "Blackboard submission"
+  ]
+}

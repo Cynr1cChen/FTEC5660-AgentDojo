@@ -1,101 +1,111 @@
-# FTEC5660: AgentDojo reproducibility project
+# FTEC5660: AgentDojo reproduction and bounded task recovery
 
-> **2026-11-13 更新：**恢复环境已修复，第一批38次开发诊断与离线审计已完成。
-> 当前结果、评分器问题、继续条件见 [第一批验收结果](STAGE1_RESULT_20261113.md)。
-> 正常任务完成4/5，两种公开注入分别完成7/15、5/15，攻击目标均未成功。
-> 原定执行前检查器尚未实现；不能直接将以下历史pilot说明当成当前状态。
+**Current research status: complete, 13 November 2026.** Materials are local review copies. GitHub publication and the actual Zoom recording remain outstanding.
 
-选题已确定为 AgentDojo。当前已完成环境准备和 6 次真实 DeepSeek 开发运行，用于费用校准；尚未完成正式基线或防御评测。费用见 [COST_ESTIMATE.md](COST_ESTIMATE.md)。
+This project runs the released AgentDojo banking Agent, reproduces multi-step tool execution and attack-associated utility loss, and adds **one bounded task-review stage** after the native Agent stops. Review uses the original user request and visible tool results, without reference answers, attack labels, scores or hidden state.
 
-理解项目建议先读 [AgentDojo 通俗讲解修订版（42 页 PDF）](output/pdf/AgentDojo_通俗讲解修订版.pdf)：以一次银行地址更新贯穿全文，先讲事情经过，再解释论文、真实日志与对应代码，补充例子、图解和误区。旧的 [技术阅读指南（35 页 PDF）](output/pdf/AgentDojo_论文与仓库详解.pdf) 仍保留供查阅。这些是学习资料；制作过程没有调用模型 API。
+## Read first
 
-## 当前范围
+- [English report, 10 pages](../output/pdf/FTEC5660_AgentDojo_Report.pdf)
+- [English presentation, 14 slides](../output/pptx/FTEC5660_AgentDojo_Presentation.pptx)
+- [Chinese explanation and recording script](../output/pdf/FTEC5660_AgentDojo_中文讲解稿.pdf)
+- [Submission checklist](SUBMISSION_CHECKLIST.md)
 
-- 主场景：banking；benchmark 显式固定为 `v1.2.2`。
-- 上游提交：`089ed468cf3ed0322acc66b0211f26d9d90dbf60`；本地分支：`course-project`。
-- 模型提供商：DeepSeek 官方 API；首轮默认 `deepseek-flash`、非思考模式。
-- 复现目标：测量工具调用 Agent 在无注入／有注入情况下的任务完成与攻击成功行为。
-- 主要修改候选：执行有外部影响的工具调用前，检查行动及参数是否与用户任务一致。先完成基线诊断，再锁定设计。
+## Main results
 
-论文模型与当前模型不同，benchmark 也包含后续修订，结果不与原论文数字直接等同。首轮 3 个用户任务、2 个攻击目标仅为开发试跑，不能当作正式结论。
+Frozen six-task experiment, three fresh API repetitions, 162 episodes:
 
-## 目录
+| Arm | Clean completion | Safe completion under attack, mean (sample SD) | Attacker success |
+|---|---:|---:|---:|
+| Native baseline | 66.67% | 36.11% (12.73 pp) | 0/36 |
+| Author prompt repetition | 72.22% | 50.00% (0.00 pp) | 0/36 |
+| Bounded task review | 100.00% | 86.11% (4.81 pp) | 0/36 |
 
-| 路径 | 用途 |
-|---|---|
-| `PROJECT_PLAN.md` | 研究问题、阶段任务和验收条件 |
-| `DEBUG_DIARY.md` | 环境问题、证据和处理记录 |
-| `pilot_config.json` | 明确限定的首轮试跑配置 |
-| `deepseek_adapter.py` | DeepSeek 接口兼容、usage 与费用估算 |
-| `prepare.py` | 无 API 的参考执行、任务目录与攻击生成检查 |
-| `run_pilot.py` | 使用上游评测器的真实小样本运行入口 |
-| `requirements.lock.txt` | 本机实际安装版本，包含可编辑安装 `-e .` |
-| `artifacts/` | 离线检查记录；这些不是模型复现成绩 |
-| `presentation_assets/` | 真实案例配图、来源快照与后续汇报素材清单 |
-| `output/pdf/` | 供阅读的 PDF 成品 |
-| `reading_guide/` | 阅读指南的中文内容与生成脚本 |
-| `../runs/course_project/` | 真实 API 运行的独立日志目录 |
+Safe completion means user-task success and attacker-goal failure. All attacked episodes expose the injected text. Native utility and prospectively specified supplementary state checks agree in every formal episode. The improvement concerns completion, not an ASR reduction from zero.
 
-## 环境
+Prefix replay of recovery trajectories gives 14/36 attacked completions before review versus 31/36 afterwards: **17 rescued, none lost**. This is a within-trajectory diagnostic, not an independently sampled baseline. Remaining main failures concentrate in task 12, whose rent notice and stored recurrence/date fields conflict.
 
-本机已创建 `.venv`，使用 Python 3.12.14，无需本地 GPU。后续命令从仓库根目录执行。
+A separately frozen follow-up gives the same simulation date to all arms on three transfer tasks. Safe completion is 16.67%, 55.56% and 94.44%. Exact state/date checks agree. This post-hoc follow-up is reported separately.
 
-在其他电脑重建时：
+## Reproduction target and scope
+
+We reproduce AgentDojo's utility/security behavior, rather than equality to paper aggregates. The model, task coverage and benchmark version differ. Successful malicious actions were not reproduced for tested attacks.
+
+- Author commit: `089ed468cf3ed0322acc66b0211f26d9d90dbf60`.
+- Package `0.1.35`; benchmark `v1.2.2`, banking only.
+- Main tasks: 4, 7, 11, 12, 14, 15; original `tool_knowledge` attack, goals 4 and 7.
+- Official DeepSeek API; requested/returned alias `deepseek-flash`.
+- Temperature 0, thinking disabled, 2,048 output tokens, SDK retries disabled.
+- Native 15 tool rounds per invocation; at most one added review using remaining rounds. Native suite-level reinvocation behavior stays unchanged.
+- Trusted original user/runtime; attacker controls designated later tool-result text.
+
+The initial action/parameter gate was implemented and compared on development tasks. Recovery performed better and became the sole formal modification **before formal sampling**. The recovery arm does not also enable that gate. See `comparison_dev/decision.json`.
+
+## Install
+
+Verified locally on macOS arm64, Python 3.12.14. No GPU required. From repository root:
 
 ```bash
 uv venv --python 3.12 .venv
 uv pip install --python .venv/bin/python -r course_project/requirements.lock.txt
 ```
 
-版本文件记录 macOS arm64 上已验证的版本；其他平台仍需重新验证。使用 pip 时，在激活的虚拟环境内执行 `pip install -r course_project/requirements.lock.txt`。
+Alternatively activate a Python 3.12 virtual environment and run `pip install -r course_project/requirements.lock.txt`. The lock records validated versions. A fresh reinstall or another OS has not been validated.
 
-## 配置 DeepSeek
-
-仓库根目录已有本地 `.env`，已被 Git 忽略。在编辑器内填写：
-
-```dotenv
-DEEPSEEK_API_KEY=你的实际密钥
-DEEPSEEK_BASE_URL=https://api.deepseek.com
-DEEPSEEK_MODEL=deepseek-flash
-```
-
-只在本机填写，不粘贴到聊天、README 或提交。`.env.example` 为不含密钥的模板。这里假定使用 DeepSeek 官方平台密钥；其他服务商的 DeepSeek 模型需单独核查。
-
-当前 API 文档列出的模型为 `deepseek-flash` 和 `deepseek-v4-pro`；首轮使用 Flash。明确关闭思考模式，以固定实验条件，并避免额外的推理历史协议差异。此处是基础适配，所有对照条件共用，不作为新增防御贡献。
-
-## 离线检查
+## Verify saved evidence without API calls
 
 ```bash
-.venv/bin/python -m course_project.prepare
+.venv/bin/python -m course_project.evidence verify
+```
+
+This restores hash-indexed evidence into an isolated temporary checkout, checks saved requests/responses, replays native tools and scoring with sockets blocked, checks formal states, and recomputes results. It reuses installed dependencies, requires no key, and preserves original runs. **326 episodes, 1,016 requests and 243 formal state files passed.** Replay does not generate new model answers.
+
+```bash
 .venv/bin/python -m pytest course_project/tests tests/test_task_injectability.py tests/test_agent_pipeline/test_prompting_llm.py tests/test_functions_runtime/test_functions_runtime.py tests/test_benchmark.py tests/test_workspace_user_tasks.py -q
 ```
 
-离线流程使用作者提供的参考工具序列检查环境和评分器，不调用模型。测试中的假 API 响应仅验证接口和执行链，不能用于报告模型准确率。
+Result: **37 passed**. Empirical performance comes from recorded API runs, not test fixtures.
 
-## 真实首轮试跑
+## Fresh model samples
+
+Dry runs cost nothing:
 
 ```bash
-.venv/bin/python -m course_project.run_pilot
+.venv/bin/python -m course_project.rerun --context original
+.venv/bin/python -m course_project.rerun --context dated
 ```
 
-配置安排 2 次攻击目标能力检查、3 次无攻击任务、6 次有攻击任务，共 11 个 episode，单次试跑，不做随机性结论。每个 episode 在新的模拟环境中运行。
+For paid sampling, create a local `.env` from `.env.example` if needed, fill the key in an editor, retain the declared model/base URL, then explicitly add `--live`:
 
-本地限制为最多 100 次 API 请求、每次最多 2,048 个输出 token、峰值费率估算 2 元的首轮预算。累计运行日志也会检查 100 元项目预算。费用估算按 2026-11-01 官方人民币峰值费率、无缓存折扣计算，未将本地模拟工具计为 DeepSeek 搜索服务；这些估算不是平台硬限额，最终扣费以控制台为准。客户端自动重试关闭，基础设施错误会停止本轮并单独标记。
+```bash
+.venv/bin/python -m course_project.rerun --context original --budget-cny 3 --live
+```
 
-每轮保留 `manifest.json`、`usage.jsonl`、`episodes.jsonl`、`summary.json` 与逐任务对话轨迹。请求模型、实际返回模型、token 用量、参数、耗时均记录；API Key 和请求头不记录。每轮使用新的目录，避免误将缓存重放当作新试验。
+Fresh samples go to timestamped `runs/rerun/` directories. Original study files remain unchanged. The runner enforces local and cumulative 100 CNY conservative budgets and low-period request-start guards. New samples can differ stochastically. Recheck current pricing before future paid work. Use this portable entry rather than historical development-freeze commands.
 
-注意上游的 `security` 字段在攻击评测中代表**攻击目标是否成功**，并非“系统是否安全”。本入口显式转为 `attack_success`；正常任务中的占位值不用于计算攻击成功率。接口错误和未运行任务的攻击结果保持未知。
+## Evidence and implementation map
 
-## 基线完成后的决定
+| Path | Purpose |
+|---|---|
+| `stage1/task_audit.json` | Task/scorer audit and reference controls |
+| `stage1/`, `supplement/`, `comparison_dev/` | Development cohorts and prospective selection |
+| `formal/protocol.json`, `formal/results.json` | Main frozen plan and results |
+| `formal/recovery_diagnosis.json` | Prefix replay |
+| `date_followup/` | Separate shared-date follow-up |
+| `interventions.py` | Action gate and bounded review |
+| `formal.py`, `dated.py` | Out-of-model observers and supplementary scoring |
+| `audit_controlled.py`, `formal_audit.py` | Request/trace/state verification |
+| `evidence/` | Synthetic-data archive, hashes and verification receipt |
+| `materials/` | Report/deck/script authoring sources |
+| `budget_final.json` | Usage and conservative accounting |
 
-检查正常任务是否可完成、攻击是否实际进入模型读取的数据、攻击目标是否能作为直接用户请求执行，以及是否存在可分析的成功／失败轨迹。之后固定正式数据范围和 3–5 次重复试验配置，再实现一个主要防御修改。
+New runs total approximately **0.8621 CNY** at recorded low-period/cache rates; no-cache peak-rate bound **5.5254 CNY**. Including prior A-Mem and old AgentDojo accounting, the conservative project bound is **76.4827 CNY**. These usage estimates are distinct from a provider account statement.
 
-最终提交仍需报告、包含清晰提交历史的 GitHub 仓库、Zoom 录屏链接。当前代码和离线检查只是这些成果的基础。
+Original exploratory cohorts remain separate. Older plans and reading guides describe historical stages. This README and formal result files own current status.
 
-## 官方来源
+## Primary references
 
-- [AgentDojo 论文](https://proceedings.nips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html)
-- [AgentDojo 执行流程](https://agentdojo.spylab.ai/concepts/agent_pipeline/)
-- [DeepSeek 工具调用](https://api-docs.deepseek.com/guides/tool_calls/)
-- [DeepSeek 思考模式](https://api-docs.deepseek.com/guides/thinking_mode/)
-- [DeepSeek 模型与人民币价格](https://api-docs.deepseek.com/zh-cn/quick_start/pricing/)
+- [AgentDojo paper v3](https://arxiv.org/html/2406.13352v3), NeurIPS 2024 Datasets and Benchmarks.
+- [Author code](https://github.com/ethz-spylab/agentdojo).
+- [Pipeline documentation](https://agentdojo.spylab.ai/concepts/agent_pipeline/).
+- [DeepSeek pricing](https://api-docs.deepseek.com/zh-cn/quick_start/pricing/), checked 13 November 2026.
