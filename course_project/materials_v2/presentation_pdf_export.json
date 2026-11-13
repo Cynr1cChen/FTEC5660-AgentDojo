@@ -1,11 +1,12 @@
 {
   "source_pptx": "output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx",
-  "source_sha256": "c419b0d804a57919a3c843e2e65ea6b39ebf71274b50617d1948acb4cb6a8c57",
+  "source_sha256": "c852ca5cba7b79916b8917def280973b1e7797f5180b357fa172615dd73709fb",
   "output": "output/pdf/FTEC5660_AgentDojo_Final_Presentation.pdf",
-  "output_sha256": "a89daa50b1d1aef97b16908309f1616675783aec4a333b79ea69d05fd7c1d724",
-  "pages": 12,
-  "hidden_backups_excluded": true,
+  "output_sha256": "1ae5f46c444ad04d97393dc9d39fb1c639eb7a73b9c5d8b3a23253164faae5cb",
+  "pages": 15,
+  "hidden_backups_excluded": false,
   "exporter": "Bundled LibreOffice headless PDF export",
-  "all_12_pages_visually_reviewed": true,
-  "user_pptx_modified_by_export": false
+  "user_pptx_modified_by_export": false,
+  "export_hidden_slides": true,
+  "all_15_pages_visually_reviewed": true
 }

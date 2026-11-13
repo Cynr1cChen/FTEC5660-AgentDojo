@@ -197,11 +197,6 @@ def data(name):
       ['extension_evidence.zip (587)','course_project.extension_review.evidence verify'],
       ['round2_evidence.zip (677)','course_project.round2.evidence verify'],
       ['closure_evidence.zip (48)','course_project.closure.evidence verify']],[222,W-222],8.2)]
-    if name=='cost':
-        rows=[['Main-cohort arm','Calls / run','API seconds / run','Usage CNY']]
-        for a,label in [('baseline','Baseline'),('repeat','Repetition'),('recovery','Review')]:
-            x=F['main'][a];rows.append([label,f"{x['mean_calls']:.2f}",f"{x['mean_api_seconds']:.2f}",f"{x['estimated_cny']:.4f}"])
-        return table(rows,[155,110,130,W-395],8.4)
     raise KeyError(name)
 
 def quote(kind):

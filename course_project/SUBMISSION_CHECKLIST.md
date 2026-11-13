@@ -2,7 +2,7 @@
 
 研究和材料制作已完成。当前材料覆盖银行主实验、公平续行对照、迁移反例、真实参数拦截和最后48次共享策略实验。成品、源码及检查记录见[materials_v2](materials_v2/README.md)。旧报告/PPT仍已退役，旧中文讲稿只作历史资料。
 
-已核对课程原始说明第2–3页，并由用户确认Blackboard页面布局：**文件区上传报告PDF，文本区填写学生GitHub与Zoom录像两个链接**。课程说明未要求单独上传PPT及讲稿；按学生追加要求，文件区也将提交12页主讲版演示文稿PDF。
+已核对课程原始说明第2–3页，并由用户确认Blackboard页面布局：**文件区上传报告PDF，文本区填写学生GitHub与Zoom录像两个链接**。课程说明未要求单独上传PPT及讲稿；按学生追加要求，文件区也将提交15页完整演示文稿PDF（含3页备用）。
 
 提交文件夹：`/Users/Admin1/Desktop/Courses/Agentic AI for Business and FinTech/individual project2/FTEC5660_Submission/`。其中01目录是报告和演示文稿PDF附件，02文本模板填写后复制到Blackboard，03目录是录制辅助。归集文件哈希与已验收成品一致；[公开学生仓库](https://github.com/Cynr1cChen/FTEC5660-AgentDojo)已发布并验证无需登录访问；Zoom录制和Blackboard提交待完成。
 

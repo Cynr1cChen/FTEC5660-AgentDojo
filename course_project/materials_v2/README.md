@@ -5,7 +5,7 @@ The research is closed. These materials cover the banking study, matched continu
 ## Current deliverables
 
 - [English report, 10 pages](../../output/pdf/FTEC5660_AgentDojo_Final_Report.pdf)
-- [Submission presentation PDF, 12 main slides](../../output/pdf/FTEC5660_AgentDojo_Final_Presentation.pdf)
+- [Submission presentation PDF, 15 pages: 12 main slides and 3 backups](../../output/pdf/FTEC5660_AgentDojo_Final_Presentation.pdf)
 - [English presentation, 12 main slides and 3 hidden backups](../../output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx)
 - [Recording script, English with Chinese below](../../output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf)
 
@@ -35,6 +35,6 @@ The [public student repository](https://github.com/Cynr1cChen/FTEC5660-AgentDojo
 
 ## Blackboard submission folder
 
-The user confirmed a file area and a text area in Blackboard. The report PDF belongs in the file area, and the student GitHub and Zoom recording links belong in the text area. The assignment does not separately require the PPTX or script. The student also requested submission of a 12-page presentation PDF, which is included in the upload directory.
+The user confirmed a file area and a text area in Blackboard. The report PDF belongs in the file area, and the student GitHub and Zoom recording links belong in the text area. The assignment does not separately require the PPTX or script. The student also requested submission of a complete 15-page presentation PDF, which is included in the upload directory.
 
 `prepare_submission.py` organized unchanged copies at `/Users/Admin1/Desktop/Courses/Agentic AI for Business and FinTech/individual project2/FTEC5660_Submission/`, with an upload directory, a link-text template and recording aids. `submission_package.json` records this handoff. The script refuses to overwrite a nonempty folder, preserving future identity/link edits. `submission_credential_check.json` records a current-tree and evidence-archive pattern scan, separate from the full history check needed before publication. The initial packaging step did not publish or submit anything. GitHub publication has since completed; Blackboard submission remains pending.

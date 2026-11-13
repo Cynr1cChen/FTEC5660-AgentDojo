@@ -181,11 +181,7 @@ The four evidence archives cover 326, 587, 677 and 48 completed runs, including 
 
 [Data table: replay; facts.json]
 
-Sixty relevant tests pass. A fresh Python environment on the same macOS system, installed from a locked offline cache, also passes the recorded checks and archive replay. Technical interruptions preserve completed cases and partial usage. The final cohort resumes its exact remaining schedule, without candidate or scoring changes.
-
-[Data table: cost; facts.json]
-
-Main-cohort call and latency means appear above. The final 48-run cohort records CNY 0.1784 in known usage plus a CNY 0.0275 unknown-request reservation, with a CNY 1.11583 conservative upper bound. The cumulative project ledger reaches CNY 125.13 against the authorized CNY 150 ceiling and includes earlier historical attempts. That cumulative bound is separate from the AgentDojo experiment usage estimates.
+Sixty relevant tests pass. A fresh Python environment on the same macOS system, installed from a locked offline cache, also passes the recorded checks and archive replay. Technical interruptions preserve completed cases and diagnostic records. The final cohort resumes its exact remaining schedule, without candidate or scoring changes.
 
 ### References and evidence index
 
