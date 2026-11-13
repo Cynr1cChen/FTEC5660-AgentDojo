@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-11-13T04:44:15.306846+00:00",
+  "cumulative_limit_cny": 150,
+  "previous_limit_cny": 100,
+  "prior_conservative_upper_cny": 99.57610780000002,
+  "authorization": "User explicitly selected 同意，提高到150元 in current chat on2026-11-13.",
+  "historical_caps_preserved": true,
+  "offpeak_only": true,
+  "planned_local_caps": {
+    "slack_broader": 8,
+    "travel_broader": 8,
+    "contract_development_each": 3,
+    "contract_formal": 12
+  },
+  "note": "Reservations are conservative upper bounds, not expected cost or account balance. Actual cumulative ledger enforced by adapter."
+}

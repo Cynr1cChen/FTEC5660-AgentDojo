@@ -77,7 +77,7 @@ class DeepSeekLLM(BasePipelineElement):
             raise BudgetExceeded("Pilot API call limit reached")
         if self.estimated_cost_cny + reserve > self.config["run_budget_cny"]:
             raise BudgetExceeded("Pilot estimated spending limit reached")
-        if self.previous_cost_cny + self.estimated_cost_cny + reserve > 100:
+        if self.previous_cost_cny + self.estimated_cost_cny + reserve > self.config.get("project_budget_cny", 100):
             raise BudgetExceeded("Project estimated spending limit reached")
 
         request = {
