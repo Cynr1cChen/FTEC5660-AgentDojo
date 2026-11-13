@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "created_utc": "2026-11-13T10:16:28.906769+00:00",
+  "archive_sha256": "2302e0534a1d115dba9fe76dd2708b692e81ca3fbdc6a117b51e87a6a28d3b52",
+  "isolated_extract": true,
+  "network_blocked_workers": true,
+  "uses_existing_dependencies": true,
+  "fresh_dependency_install": false,
+  "verified": [
+    {
+      "run": "runs/closure/shared_policy/20261113T100009033657Z",
+      "completed": 14,
+      "planned": 48,
+      "requests": 69,
+      "audit_available": true
+    },
+    {
+      "run": "runs/closure/shared_policy_continuation/20261113T100646145029Z",
+      "completed": 34,
+      "planned": 34,
+      "requests": 165,
+      "audit_available": true
+    }
+  ],
+  "technical_attempts_not_replayed": []
+}

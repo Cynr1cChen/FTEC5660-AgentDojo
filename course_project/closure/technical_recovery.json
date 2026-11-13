@@ -1,0 +1,34 @@
+{
+  "created_utc": "2026-11-13T10:10:06.608953+00:00",
+  "user_explicitly_resumed": true,
+  "completed_retained": 14,
+  "remaining_unchanged": 34,
+  "old_local_cost_cny": 0.344862,
+  "continuation_local_cap_cny": 4.655138,
+  "combined_cap_cny": 5,
+  "cumulative_cap_cny": 150,
+  "unknown_reservation_cny": 0.0275,
+  "unknown_already_in_usage": true,
+  "actor_source_hashes_verified": {
+    "course_project/closure/pipelines.py": "3c499916cc115fa196d61ebe363b2d28928b07f1888d231798bca0544eed6b02",
+    "course_project/closure/rubrics.py": "f58accadba5f3e8e4e89f5e7e7af02b2f9ad56464655b739f75cc36477d18620",
+    "course_project/closure/runner.py": "bb01948ec7d9e041763e414b356cb0ee4c5ef9c65765d3c0cd14ccc5106d8486",
+    "course_project/deepseek_adapter.py": "f8a3be305b953d7d8dcadd9c23ea61ecaa92029e34257719b81db0bb032d3b33",
+    "course_project/extension/pipelines.py": "e9c3a04acfe6325361af92bb35dc19f8610eba5e4e1da447c5a9e84f79f57d9f",
+    "course_project/extension/runner.py": "d98c144fa7b4f48bf3fc1016f3835e21b8767dd0be88b367f867e32aa27ba44e",
+    "course_project/interventions.py": "4c2c86e49f0f2dbd00cbdefd5a6139c540f25444828ca716f5e33422584de68f",
+    "course_project/round2/anchored.py": "05b340d51b36e485d5a33cae3e8ac110322fe6c94408c265fa441388bd43bf3e",
+    "course_project/round2/contract.py": "fd8f3bfd52cb6ea4ce7500dde9f2ffa893409392bf6ec9b8824514c26556ef31",
+    "course_project/round2/pipelines.py": "3d26b16e48c8e769007896115cf79ce6d09f9b11318e9eea46c1e271f4aeebb8",
+    "course_project/round2/rubrics.py": "21fe9f603db8192f20a3a59b20dda99c88b4a0406f0a5c44396f0023b57d7dbd",
+    "course_project/run_pilot.py": "efd525465344f9cb65b1987d7d121c69178af9deb544d2e6aeef3f8e5e949897",
+    "course_project/stage1.py": "6cb1945bfe5686dcef757ba837fdc3a88a35e1783f6295f43e23f18aabdb0edf"
+  },
+  "audit_changes": [
+    "Handle missing response already reserved by adapter finally block without double counting",
+    "Merge14+34 using parent schedule/payload hashes and unique global indices",
+    "Stricter acceptance check also includes all clean cases"
+  ],
+  "outcome_metrics_or_actor_changes": false,
+  "quality_retries": false
+}

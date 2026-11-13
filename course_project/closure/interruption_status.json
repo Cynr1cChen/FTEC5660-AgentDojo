@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-11-13T10:02:53.526952+00:00",
+  "reason": "User interrupted active turn. Waiting helper had already started at18:00 before interruption was handled; verified child process received SIGINT. No further calls authorized by this interrupted turn.",
+  "run": "runs/closure/shared_policy/20261113T100009033657Z",
+  "completed": 14,
+  "expected": 48,
+  "request_files": 69,
+  "response_files": 68,
+  "usage_rows": 69,
+  "unknown_cost_reservation_already_in_usage": 0.0275,
+  "project_upper": 124.36006780000002,
+  "source_and_plan_retained": true
+}

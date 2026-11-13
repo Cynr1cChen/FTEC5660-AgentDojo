@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-11-13T10:17:36.028917+00:00",
+  "uses_previously_fresh_virtual_environment": true,
+  "prior_install_receipt": "course_project/round2/fresh_environment.json",
+  "prior_install_receipt_sha256": "cb19c6885fea0a717bc96dc20f8d5b1adf435c59f2fe301550ae031fbea645c1",
+  "new_dependency_install": false,
+  "new_dependencies_required": false,
+  "new_environment_tests_passed": 60,
+  "archive_replay_passed": true,
+  "archive_sha256": "2302e0534a1d115dba9fe76dd2708b692e81ca3fbdc6a117b51e87a6a28d3b52",
+  "source_for_replay": "Each archived actor/evaluator snapshot; current verifier handles technical interruption.",
+  "files": {
+    "verification/tests.txt": "d17ddbab614e34941bdfd96fd1464661c8770e6dc3b44d88d42a44abd3408803",
+    "verification/fresh_package_verification.json": "fdc8c200a1546b95e459d0e68d59ea0437cbce458960ebf7b46ff18391d75643",
+    "verification/fresh_tests.txt": "bcfeaebd49ae4c6076701a35ce1be5672a1d857360f0419533857e2b4d4a1266",
+    "verification/resume_engineering_tests.txt": "76b9bb31a1001b4d50ceb378f08067c6a3bf34a3c0e0a37028e444db8f046ab5",
+    "verification/fresh_archive_replay.txt": "3178d2f3897b428c29a7c970b4f0bce54808dcd44d2c651881c49eb590275c24",
+    "verification/preflight.json": "17bdcf88eb36936797ee1e4d3aece680d212b87f93a6af54f089595cde199e1d",
+    "verification/archive_replay.txt": "3178d2f3897b428c29a7c970b4f0bce54808dcd44d2c651881c49eb590275c24"
+  }
+}
