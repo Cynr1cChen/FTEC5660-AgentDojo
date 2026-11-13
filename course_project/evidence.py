@@ -57,16 +57,26 @@ def verify():
             q=target/rel;q.parent.mkdir(parents=True,exist_ok=True);q.write_bytes(p.read_bytes())
         restore(target)
         env={**os.environ,'PYTHONPATH':str(target/'src')+os.pathsep+str(target),'PYTHONDONTWRITEBYTECODE':'1'}
-        commands=[['-c',"import runpy; runpy.run_path('course_project/stage1/verify_development.py',run_name='__main__')"],
-                  ['-m','course_project.audit_controlled','supplement'],
-                  ['-m','course_project.audit_controlled','comparison_dev'],
-                  ['-m','course_project.formal_audit','formal'],
-                  ['-m','course_project.formal_audit','date_followup'],
-                  ['-m','course_project.results_formal','formal'],
-                  ['-m','course_project.results_formal','date_followup']]
-        for command in commands:
-            subprocess.run([str(ROOT/'.venv/bin/python'),*command],cwd=target,env=env,check=True,
-                           stdout=subprocess.DEVNULL)
+        commands={
+            'stage1':[['-c',"import runpy; runpy.run_path('course_project/stage1/verify_development.py',run_name='__main__')"]],
+            'supplement':[['-m','course_project.audit_controlled','supplement']],
+            'comparison_dev':[['-m','course_project.audit_controlled','comparison_dev']],
+            'formal':[['-m','course_project.formal_audit','formal'],['-m','course_project.results_formal','formal']],
+            'date_followup':[['-m','course_project.formal_audit','date_followup'],['-m','course_project.results_formal','date_followup']],
+        }
+        for phase in PHASES:
+            # Historical actors must come from that run's hashed snapshot.
+            # Later authorized budget support changed the live adapter; copying
+            # it into a historical replay falsely required a live-source match.
+            d=sorted((target/f'runs/{phase}').iterdir())[-1]
+            manifest=read(d/'manifest.json');protocol=manifest.get('protocol',manifest)
+            for name,digest in protocol['source_hashes'].items():
+                saved=d/'source_snapshot'/name;assert sha(saved)==digest
+                destination=target/name;destination.parent.mkdir(parents=True,exist_ok=True)
+                shutil.copy2(saved,destination)
+            for command in commands[phase]:
+                subprocess.run([str(ROOT/'.venv/bin/python'),*command],cwd=target,env=env,check=True,
+                               stdout=subprocess.DEVNULL)
         for phase in ['formal','date_followup']:
             a=read(ROOT/f'course_project/{phase}/results.json');b=read(target/f'course_project/{phase}/results.json')
             for x in [a,b]:
@@ -75,6 +85,7 @@ def verify():
         write(ROOT/'course_project/evidence/verification.json',dict(passed=True,
             isolated_directory=True,uses_existing_dependencies=True,fresh_dependency_install=False,
             phases=PHASES,all_requests_and_states_replayed=True,formal_aggregates_identical=True,
+            phase_specific_hashed_actor_snapshots=True,
             archive_sha256=sha(ARCHIVE)))
         print('Isolated saved-evidence verification passed; no paid API calls.')
 

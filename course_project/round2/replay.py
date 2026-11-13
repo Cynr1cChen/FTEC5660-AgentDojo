@@ -16,18 +16,36 @@ def worker(directory):
  if any(c.get('goal')=='injection_task_100' or c.get('task')=='injection_task_100' for c in p['schedule']):
   import course_project.extension.custom_goals
  assert s['completed']==sum(x['status']=='completed' for x in s['rows'])<=p['expected_episodes']
- assert all(x.get('status')=='error' and x.get('error_type') in ['BudgetExceeded','ValueError','RuntimeError'] for x in s['rows'] if x['status']!='completed')
+ assert all(x.get('status')=='error' and x.get('error_type') in ['BudgetExceeded','ValueError','RuntimeError','ProcessInterrupted'] for x in s['rows'] if x['status']!='completed')
  for f,h in p['source_hashes'].items():assert sha(d/'source_snapshot'/f)==h
- req=[read(f) for f in sorted((d/'calls').glob('*.request.json'))];res=[read(f) for f in sorted((d/'calls').glob('*.response.json'))]
+ reqfiles=sorted((d/'calls').glob('*.request.json'));resfiles=sorted((d/'calls').glob('*.response.json'))
+ req=[read(f) for f in reqfiles];res=[read(f) for f in resfiles]
+ pending=[f.name for f in reqfiles if not f.with_name(f.name.replace('.request.','.response.')).exists()]
+ interruption=read(d/'interruption.json') if (d/'interruption.json').exists() else {}
+ assert pending==interruption.get('pending_requests',[])
+ matched=[read(f) for f in reqfiles if f.name not in pending]
  uses=[json.loads(x) for x in (d/'usage.jsonl').read_text().splitlines()]
- assert len(req)==len(res)==len(uses)==s['api_calls'];known=upper=0
- for q,r,u in zip(req,res,uses):
+ assert len(req)==s['api_calls'] and len(matched)==len(res)==len(uses);known=upper=0;peak_starts=0
+ for q in req:
   dt=datetime.fromisoformat(q['created_utc']).astimezone(timezone(timedelta(hours=8)));m=dt.hour*60+dt.minute
-  assert not(dt.weekday()<5 and (540<=m<720 or 840<=m<1080))
+  is_peak=dt.weekday()<5 and (540<=m<720 or 840<=m<1080);peak_starts+=int(is_peak)
+  if is_peak:
+   assert not p['offpeak_only'] and p['schedule_authorization']['explicit_user_peak_permission']
+   assert p['schedule_authorization']['local_cap_cny']==10 and p['schedule_authorization']['cumulative_cap_cny']==150
+ for q,r,u in zip(matched,res,uses):
   usage=r['response']['usage'];assert usage==u['usage'] and u['status']=='ok'
-  hit=usage.get('prompt_cache_hit_tokens',0);known+=(hit*.02+usage['prompt_tokens']-hit+usage['completion_tokens']*4)/1e6
+  dt=datetime.fromisoformat(q['created_utc']).astimezone(timezone(timedelta(hours=8)));m=dt.hour*60+dt.minute;factor=2 if dt.weekday()<5 and (540<=m<720 or 840<=m<1080) else 1
+  hit=usage.get('prompt_cache_hit_tokens',0);known+=factor*(hit*.02+usage['prompt_tokens']-hit+usage['completion_tokens']*4)/1e6
   cost=(usage['prompt_tokens']*2+usage['completion_tokens']*8)/1e6;assert abs(cost-u['estimated_cost_cny'])<1e-9;upper+=cost
- assert abs(upper-s['peak_upper_cny'])<1e-9
+ unknown=interruption.get('unknown_reservation_cny',0)
+ expected_unknown=0
+ for f in reqfiles:
+  if f.name not in pending:continue
+  assert sha(f)==interruption['pending_request_hashes'][f.name]
+  q=read(f)['request'];n=len(json.dumps(dict(messages=q['messages'],tools=q.get('tools',[])),ensure_ascii=False).encode('utf-8'))+64*len(q['messages'])+512
+  expected_unknown+=(n*2+p['config']['max_output_tokens']*8)/1e6
+ assert abs(expected_unknown-unknown)<1e-12
+ assert abs(upper+unknown-s['peak_upper_cny'])<1e-9
  def blocked(*a,**k):raise RuntimeError('Network disabled in replay')
  socket.socket.connect=blocked;socket.socket.connect_ex=blocked;socket.create_connection=blocked
  payloads={};rows=[]
@@ -103,7 +121,7 @@ def worker(directory):
    payloads[key]=t['injections']
    assert row['exposed']==exposure(t)
   rows.append(row)
- out=dict(passed=True,cohort_complete=(s['completed']==p['expected_episodes']),technical_rows=[x for x in s['rows'] if x['status']!='completed'],requests_replayed=sum(x['api_calls'] for x in rows),created_utc=stamp(),network_blocked=True,isolated_archived_source=True,episodes=len(rows),requests=len(req),state_files_verified=len(rows),all_offpeak=True,known_offpeak_cny=known,peak_upper_cny=upper,all_attacks_exposed=all(r['exposed'] for r in rows if r['phase']=='attacked'),rows=rows)
+ out=dict(passed=True,cohort_complete=(s['completed']==p['expected_episodes']),technical_rows=[x for x in s['rows'] if x['status']!='completed'],requests_replayed=sum(x['api_calls'] for x in rows),created_utc=stamp(),network_blocked=True,isolated_archived_source=True,episodes=len(rows),requests=len(req),state_files_verified=len(rows),all_offpeak=not peak_starts,peak_request_starts=peak_starts,known_recorded_period_cny=known,known_offpeak_cny=known if not peak_starts else None,peak_upper_cny=upper+unknown,unknown_reservation_cny=unknown,missing_response_requests=pending,all_attacks_exposed=all(r['exposed'] for r in rows if r['phase']=='attacked'),rows=rows)
  write(d/'audit.json',out);print(json.dumps({k:v for k,v in out.items() if k!='rows'}))
 
 def verify(directory):

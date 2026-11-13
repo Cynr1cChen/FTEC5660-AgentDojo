@@ -22,8 +22,17 @@ HERE=ROOT/'course_project/round2'
 BASELINE_BOUND=99.57610780000002
 
 def prior_spending():
- return BASELINE_BOUND+sum(json.loads(line)['estimated_cost_cny'] for p in (ROOT/'runs/round2').glob('*/*/usage.jsonl') for line in p.read_text().splitlines() if line.strip())
+ return BASELINE_BOUND+sum(json.loads(line)['estimated_cost_cny'] for p in (ROOT/'runs/round2').glob('*/*/usage.jsonl') for line in p.read_text().splitlines() if line.strip())+sum(read(p)['unknown_reservation_cny'] for p in (ROOT/'runs/round2').glob('*/*/interruption.json'))
 def source_files():return sorted(set(sources()+list((ROOT/'course_project/extension').glob('*.py'))+list((ROOT/'course_project/extension_review').glob('*.py'))+list(HERE.glob('*.py'))))
+
+class ExplicitPeakClient(RecordedClient):
+ """Only selected by a frozen, explicitly authorized scheduling amendment."""
+ def create(self,**request):
+  self.counter+=1;path=self.directory/f'calls/{self.counter:04d}'
+  write(path.with_suffix('.request.json'),dict(created_utc=stamp(),case=self.case,request=request))
+  result=self.client.chat.completions.create(**request)
+  write(path.with_suffix('.response.json'),dict(received_utc=stamp(),response=result.model_dump()))
+  return result
 
 def freeze(name,cases,budget,notes):
  path=HERE/name/'protocol.json';assert not path.exists(),'Already frozen'
@@ -131,7 +140,11 @@ def historical_supplemental(case,states,native):
 def run(name):
  p=read(HERE/name/'protocol.json')
  for f,h in p['source_hashes'].items():assert sha(ROOT/f)==h,'Frozen source changed: '+f
- offpeak();load_dotenv(ROOT/'.env',override=False);key=os.getenv('DEEPSEEK_API_KEY','').strip();assert key
+ if p['offpeak_only']:offpeak()
+ else:
+  auth=p['schedule_authorization'];assert auth['explicit_user_peak_permission'] and auth['local_cap_cny']==10 and auth['cumulative_cap_cny']==150
+  assert p['config']['run_budget_cny']<=10 and p['config']['project_budget_cny']==150
+ load_dotenv(ROOT/'.env',override=False);key=os.getenv('DEEPSEEK_API_KEY','').strip();assert key
  assert os.getenv('DEEPSEEK_MODEL','deepseek-flash')=='deepseek-flash'
  prior=prior_spending();assert prior+p['config']['run_budget_cny']<=150
  d=ROOT/'runs/round2'/name/datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ');d.mkdir(parents=True)
@@ -139,7 +152,7 @@ def run(name):
   q=d/'source_snapshot'/f;q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/f,q)
  write(d/'manifest.json',dict(protocol=p,protocol_sha256=sha(HERE/name/'protocol.json'),prior_upper_cny=prior))
  client=OpenAI(api_key=key,base_url='https://api.deepseek.com',max_retries=0,timeout=httpx.Timeout(180,connect=15))
- rec=RecordedClient(client,d);llm=DeepSeekLLM(rec,'deepseek-flash',p['config'],d/'usage.jsonl',prior);rows=[]
+ rec=(RecordedClient if p['offpeak_only'] else ExplicitPeakClient)(client,d);llm=DeepSeekLLM(rec,'deepseek-flash',p['config'],d/'usage.jsonl',prior);rows=[]
  try:
   for i,c in enumerate(p['schedule']):
    rec.case=c;llm.context=c;start=len(llm.records);states=[];events=[];ep=d/f'episodes/{i:03d}';row=dict(index=i,**c,status='error')
