@@ -1,0 +1,29 @@
+{
+  "created_utc": "2026-11-13T10:28:19.495747+00:00",
+  "authorization": "User explicitly requested deleting the original report and PPT only before planning replacements.",
+  "scope": "Two named final deliverables in working tree only; no folder, wildcard, source, evidence or script deletion.",
+  "targets": [
+    {
+      "path": "output/pdf/FTEC5660_AgentDojo_Report.pdf",
+      "bytes": 318072,
+      "sha256": "18b125453358aa893f97a6251ffdbf918e02574eefe156e108453670992f8e05"
+    },
+    {
+      "path": "output/pptx/FTEC5660_AgentDojo_Presentation.pptx",
+      "bytes": 98381,
+      "sha256": "de1da3d751cbcd1ca91a664e0361eddc8d58dc49da62eecded6c794e67508f4b"
+    }
+  ],
+  "completed": true,
+  "retained": [
+    "output/pdf/FTEC5660_AgentDojo_中文讲解稿.pdf",
+    "course_project/materials/",
+    "course_project/evidence/",
+    "course_project/formal/",
+    "course_project/extension_review/",
+    "course_project/round2/",
+    "course_project/closure/"
+  ],
+  "historical_receipts": "Prior delivery/acceptance hashes describe artifacts before this authorized retirement; they remain historical records. Research archives and replay do not depend on these two exports.",
+  "retained_chinese_script_sha256": "2cacb99845a8c412c6fdb58c87e4b25b260bbb967bf85a4f30e3a7d96ba1b56d"
+}
