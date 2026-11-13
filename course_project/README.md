@@ -1,12 +1,13 @@
 # FTEC5660: AgentDojo reproduction and bounded task recovery
 
-**Read the final research closure first: [研究收尾与结项](closure/RESEARCH_CLOSURE.md).** Research sampling is closed after the final48-case shared-policy test, retaining both local gains and normal-control regressions. The user explicitly retired the old report/PPT exports; their replacement is currently at the [framework stage](materials_v2/FRAMEWORK.md). The older Chinese script remains historical. This page below describes the historical326-episode stage. The first extension is in [extension_review](extension_review/README.md); the second is in [round2](round2/README.md). GitHub publication and actual Zoom recording remain outstanding.
+**Final materials are complete: [report, presentation and bilingual recording script](materials_v2/README.md).** They cover the completed research through the fixed48-case shared-policy study. Research sampling is closed, retaining both local gains and normal-control regressions. Read the [研究收尾与结项](closure/RESEARCH_CLOSURE.md) for the research disposition. The old report/PPT remain retired, and the earlier Chinese script is historical. The page below describes the original326-run stage; later evidence is in [extension_review](extension_review/README.md), [round2](round2/README.md) and [closure](closure/README.md). Identity completion, GitHub publication, actual Zoom recording and submission remain outstanding.
 
 This project runs the released AgentDojo banking Agent, reproduces multi-step tool execution and attack-associated utility loss, and adds **one bounded task-review stage** after the native Agent stops. Review uses the original user request and visible tool results, without reference answers, attack labels, scores or hidden state.
 
 ## Read first
 
-- [Replacement report/PPT/recording-script framework](materials_v2/FRAMEWORK.md)
+- [Final materials and source files](materials_v2/README.md)
+- [Report/PPT/recording-script framework](materials_v2/FRAMEWORK.md)
 - [Exact retirement scope and original hashes](materials_v2/retired_artifacts.json)
 - [Historical Chinese explanation, not the new recording script](../output/pdf/FTEC5660_AgentDojo_中文讲解稿.pdf)
 - [Submission checklist](SUBMISSION_CHECKLIST.md)

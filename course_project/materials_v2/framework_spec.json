@@ -1,6 +1,6 @@
 {
   "created_utc": "2026-11-13T10:39:19.911925+00:00",
-  "status": "framework_only_no_replacement_artifacts_created",
+  "status": "authored_and_validated",
   "title": "Reproducing AgentDojo: Task Recovery and Authorization Trade-offs",
   "report_max_pages": 10,
   "report_language": "English",
@@ -65,7 +65,7 @@
     },
     {
       "slide": 6,
-      "title": "Transfer tests expose an answer-replacement failure",
+      "title": "Review can replace a useful answer",
       "internal_planning_seconds": 65,
       "previous_slides": [
         9
@@ -127,7 +127,6 @@
   "video_limit_seconds": 900,
   "buffer_seconds": 120,
   "identity_fields": "blank until user fills",
-  "new_model_calls": 0,
   "planned_exports": [
     "output/pdf/FTEC5660_AgentDojo_Final_Report.pdf",
     "output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx",
@@ -138,7 +137,7 @@
     "sha256": "86917adf5fe240d0eea52da68ff386edcf03f53a9fa16daca8deb19ffaeb379d",
     "language_not_specified_by_course": true
   },
-  "updated_utc": "2026-11-13T11:51:21.044695+00:00",
+  "updated_utc": "2026-11-13T13:29:28.387660+00:00",
   "recording_language": "English",
   "chinese_translation": "Below the full English text for each slide",
   "script_show_target_times": false,
@@ -146,5 +145,14 @@
   "template_source_sha256": "6fffbef873e11fc4ef62139db7a7e8a0c28bc3c8f093e7c091a39503ba67a75d",
   "optimized_template": "/Users/Admin1/Desktop/Courses/Agentic AI for Business and FinTech/individual project2/FTEC5660_AgentDojo_20261108_204938/agentdojo_project/output/pptx/FTEC5660_Template_Slim.pptx",
   "language_style": "Direct, confident, active prose; natural professional speech. State setup once and concentrate substantive boundaries in discussion.",
-  "visual_direction": "Strong blue geometric template, vivid cyan and warm gold/orange accents, bespoke architecture/process imagery, polished evidence charts and actual trace excerpts."
+  "visual_direction": "Blue geometric template. Flat educational illustrations for ordinary explanations. Academic native diagrams for architecture/processes. Editable evidence charts and tables with necessary explanatory text.",
+  "actual_english_script_words": 1458,
+  "new_research_model_calls": 0,
+  "visual_reference": "/Users/Admin1/Desktop/Courses/Applied Blockchain  and Cryptocurrencies/MEV_mini_lecture/MEV_Group9.pdf",
+  "actual_exports": [
+    "output/pdf/FTEC5660_AgentDojo_Final_Report.pdf",
+    "output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx",
+    "output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf"
+  ],
+  "delivery_validation": "course_project/materials_v2/delivery_validation.json"
 }

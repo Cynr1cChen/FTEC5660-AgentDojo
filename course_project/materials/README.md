@@ -1,6 +1,6 @@
 # Material sources and review
 
-**Historical sources for the earlier326-episode stage.** The user explicitly deleted the old report PDF and PPTX exports before planning replacements. The old Chinese script and all source/template files remain. Current planning is in [materials_v2](../materials_v2/FRAMEWORK.md), with the exact deletion receipt in that directory. The validation and artifact-hash records below describe the earlier delivery before retirement; they are not a current-material acceptance claim. New authoring must use the final research evidence rather than rerun this old builder unchanged.
+**Historical sources for the earlier326-run stage.** The user explicitly deleted the old report PDF and PPTX exports before creating replacements. The old Chinese script and all source/template files remain. The completed current materials are in [materials_v2](../materials_v2/README.md), with the exact deletion receipt in that directory. The validation and artifact-hash records below describe the earlier delivery before retirement. Use materials_v2/delivery_validation.json for current-file acceptance. Do not rerun this old builder unchanged.
 
 The delivered report and slides use the frozen result JSON files. `validate_delivery.py` checks exported chart caches against those sources, page/slide counts, embedded chart workbooks and blank identity fields.
 
