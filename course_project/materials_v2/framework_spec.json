@@ -5,8 +5,8 @@
   "report_max_pages": 10,
   "report_language": "English",
   "deck_language": "English",
-  "spoken_script_primary": "Chinese",
-  "english_spoken_counterpart": "Optional, in speaker notes or parallel column; record only one language.",
+  "spoken_script_primary": "English",
+  "english_spoken_counterpart": "English is the primary spoken text, not an optional counterpart.",
   "report_pages": [
     1,
     2,
@@ -23,131 +23,128 @@
     {
       "slide": 1,
       "title": "Reproducing AgentDojo",
-      "seconds": 20,
-      "start_seconds": 0,
-      "end_seconds": 20
+      "internal_planning_seconds": 25,
+      "previous_slides": [
+        1
+      ]
     },
     {
       "slide": 2,
-      "title": "A refund left unfinished",
-      "seconds": 45,
-      "start_seconds": 20,
-      "end_seconds": 65
+      "title": "A refund, an injection and an unfinished task",
+      "internal_planning_seconds": 65,
+      "previous_slides": [
+        2,
+        3
+      ]
     },
     {
       "slide": 3,
-      "title": "Agent, tools and trust boundaries",
-      "seconds": 45,
-      "start_seconds": 65,
-      "end_seconds": 110
+      "title": "Reproduction design and evaluation",
+      "internal_planning_seconds": 70,
+      "previous_slides": [
+        4,
+        5
+      ]
     },
     {
       "slide": 4,
-      "title": "Reproduction scope and setup",
-      "seconds": 45,
-      "start_seconds": 110,
-      "end_seconds": 155
+      "title": "Bounded task review",
+      "internal_planning_seconds": 70,
+      "previous_slides": [
+        6
+      ]
     },
     {
       "slide": 5,
-      "title": "Outcomes and measurement checks",
-      "seconds": 50,
-      "start_seconds": 155,
-      "end_seconds": 205
+      "title": "Banking results and the neutral control",
+      "internal_planning_seconds": 100,
+      "previous_slides": [
+        7,
+        8
+      ]
     },
     {
       "slide": 6,
-      "title": "Bounded task review",
-      "seconds": 50,
-      "start_seconds": 205,
-      "end_seconds": 255
+      "title": "Transfer tests expose an answer-replacement failure",
+      "internal_planning_seconds": 65,
+      "previous_slides": [
+        9
+      ]
     },
     {
       "slide": 7,
-      "title": "Banking results",
-      "seconds": 60,
-      "start_seconds": 255,
-      "end_seconds": 315
+      "title": "Authorization controls: protection and completion",
+      "internal_planning_seconds": 95,
+      "previous_slides": [
+        10,
+        11
+      ]
     },
     {
       "slide": 8,
-      "title": "Neutral continuation and trajectory evidence",
-      "seconds": 65,
-      "start_seconds": 315,
-      "end_seconds": 380
+      "title": "A shared authorization policy",
+      "internal_planning_seconds": 60,
+      "previous_slides": [
+        12
+      ]
     },
     {
       "slide": 9,
-      "title": "Transfer tests and a Travel failure",
-      "seconds": 55,
-      "start_seconds": 380,
-      "end_seconds": 435
+      "title": "Local repair and legitimate-task losses",
+      "internal_planning_seconds": 80,
+      "previous_slides": [
+        13
+      ]
     },
     {
       "slide": 10,
-      "title": "Authorization checks and false blocks",
-      "seconds": 55,
-      "start_seconds": 435,
-      "end_seconds": 490
+      "title": "Valid user authority gets misread",
+      "internal_planning_seconds": 65,
+      "previous_slides": [
+        14
+      ]
     },
     {
       "slide": 11,
-      "title": "Deterministic parameter constraints",
-      "seconds": 50,
-      "start_seconds": 490,
-      "end_seconds": 540
+      "title": "Reproducible evidence",
+      "internal_planning_seconds": 45,
+      "previous_slides": [
+        15
+      ]
     },
     {
       "slide": 12,
-      "title": "A shared authorization policy",
-      "seconds": 45,
-      "start_seconds": 540,
-      "end_seconds": 585
-    },
-    {
-      "slide": 13,
-      "title": "Local repair and legitimate-task losses",
-      "seconds": 65,
-      "start_seconds": 585,
-      "end_seconds": 650
-    },
-    {
-      "slide": 14,
-      "title": "Misreading valid user authority",
-      "seconds": 50,
-      "start_seconds": 650,
-      "end_seconds": 700
-    },
-    {
-      "slide": 15,
-      "title": "Reproducibility and scope",
-      "seconds": 40,
-      "start_seconds": 700,
-      "end_seconds": 740
-    },
-    {
-      "slide": 16,
       "title": "Findings and practical implications",
-      "seconds": 45,
-      "start_seconds": 740,
-      "end_seconds": 785
+      "internal_planning_seconds": 40,
+      "previous_slides": [
+        16
+      ]
     }
   ],
   "backup_slides": 3,
-  "total_slides": 19,
-  "planned_spoken_seconds": 785,
+  "total_slides": 15,
+  "planned_spoken_seconds": 780,
   "video_limit_seconds": 900,
-  "buffer_seconds": 115,
+  "buffer_seconds": 120,
   "identity_fields": "blank until user fills",
   "new_model_calls": 0,
   "planned_exports": [
     "output/pdf/FTEC5660_AgentDojo_Final_Report.pdf",
     "output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx",
-    "output/pdf/FTEC5660_AgentDojo_Recording_Script_CN.pdf"
+    "output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf"
   ],
   "course_requirements": {
     "path": "/Users/Admin1/Desktop/Courses/Agentic AI for Business and FinTech/individual project2/Reproducibility.pdf",
     "sha256": "86917adf5fe240d0eea52da68ff386edcf03f53a9fa16daca8deb19ffaeb379d",
     "language_not_specified_by_course": true
-  }
+  },
+  "updated_utc": "2026-11-13T11:51:21.044695+00:00",
+  "recording_language": "English",
+  "chinese_translation": "Below the full English text for each slide",
+  "script_show_target_times": false,
+  "template_source": "/Users/Admin1/Downloads/模板.pptx",
+  "template_source_sha256": "6fffbef873e11fc4ef62139db7a7e8a0c28bc3c8f093e7c091a39503ba67a75d",
+  "optimized_template": "/Users/Admin1/Desktop/Courses/Agentic AI for Business and FinTech/individual project2/FTEC5660_AgentDojo_20261108_204938/agentdojo_project/output/pptx/FTEC5660_Template_Slim.pptx",
+  "language_style": "Direct, confident, active prose; natural professional speech. State setup once and concentrate substantive boundaries in discussion.",
+  "visual_direction": "Strong blue geometric template, vivid cyan and warm gold/orange accents, bespoke architecture/process imagery, polished evidence charts and actual trace excerpts."
 }
