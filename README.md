@@ -1,6 +1,10 @@
-# FTEC5660 student reproduction study
+# Beyond Attack Rejection: Task Completion in AgentDojo
 
 Current report, results, installation and saved-evidence verification: **[course_project/README.md](course_project/README.md)**.
+
+Final submission materials: [report](output/pdf/FTEC5660_AgentDojo_Final_Report.pdf), [presentation PDF](output/pdf/FTEC5660_AgentDojo_Final_Presentation.pdf), and [bilingual recording script](output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf).
+
+This student study extends [ETH Zurich / SPY Lab AgentDojo](https://github.com/ethz-spylab/agentdojo), pinned to commit `089ed468cf3ed0322acc66b0211f26d9d90dbf60`. Original attribution and the MIT license are retained.
 
 The original author documentation follows.
 

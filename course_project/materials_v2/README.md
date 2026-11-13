@@ -5,10 +5,11 @@ The research is closed. These materials cover the banking study, matched continu
 ## Current deliverables
 
 - [English report, 10 pages](../../output/pdf/FTEC5660_AgentDojo_Final_Report.pdf)
+- [Submission presentation PDF, 12 main slides](../../output/pdf/FTEC5660_AgentDojo_Final_Presentation.pdf)
 - [English presentation, 12 main slides and 3 hidden backups](../../output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx)
 - [Recording script, English with Chinese below](../../output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf)
 
-The spoken script has 1,541 English words. It follows the 12 main slides as a connected spoken narrative, with deliberate paragraph boundaries and transitions between slides. English comes first, followed by Chinese, without target-duration labels. The report has blank fillable name/student-ID fields, and the presentation leaves both identity fields blank. The slide notes include the corresponding English/Chinese script and source pointers.
+The spoken script has 1,541 English words. It follows the 12 main slides as a connected spoken narrative, with deliberate paragraph boundaries and transitions between slides. English comes first, followed by Chinese, without target-duration labels. The report has blank fillable name/student-ID fields, and the user has filled the presentation cover identity fields. The slide notes include the corresponding English/Chinese script and source pointers.
 
 The supplied blue geometric template remains the design base. Ordinary explanations use flat educational illustrations inspired by the user's MEV reference. Architecture, execution flow and evidence diagrams use academic conventions and editable native shapes. Four native charts include four embedded data workbooks, and seven tables remain editable. Explanatory text accompanies the visuals where needed.
 
@@ -34,6 +35,6 @@ Remaining submission actions are filling identity information, publishing the st
 
 ## Blackboard submission folder
 
-The user confirmed a file area and a text area in Blackboard. The report PDF belongs in the file area, and the student GitHub and Zoom recording links belong in the text area. The assignment does not separately require the PPTX or script.
+The user confirmed a file area and a text area in Blackboard. The report PDF belongs in the file area, and the student GitHub and Zoom recording links belong in the text area. The assignment does not separately require the PPTX or script. The student also requested submission of a 12-page presentation PDF, which is included in the upload directory.
 
 `prepare_submission.py` organized unchanged copies at `/Users/Admin1/Desktop/Courses/Agentic AI for Business and FinTech/individual project2/FTEC5660_Submission/`, with an upload directory, a link-text template and recording aids. `submission_package.json` records this handoff. The script refuses to overwrite a nonempty folder, preserving future identity/link edits. `submission_credential_check.json` records a current-tree and evidence-archive pattern scan, separate from the full history check needed before publication. This packaging step did not publish or submit anything.

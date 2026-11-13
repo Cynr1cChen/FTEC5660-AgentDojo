@@ -1,0 +1,10 @@
+{
+  "scope": "All blobs reachable from current course-project HEAD, with ZIP member inspection, before publication",
+  "head": "7a082148f393fc4eac4e2d2733bb856601ba4510",
+  "blobs_checked": 37233,
+  "bytes_checked": 534379919,
+  "archives_inspected": 25,
+  "known_local_secret_values_checked": 1,
+  "issues": [],
+  "large_files": []
+}

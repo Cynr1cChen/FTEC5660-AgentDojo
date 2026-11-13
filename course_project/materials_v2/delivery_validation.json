@@ -443,5 +443,16 @@
       }
     ],
     "presentation_checks_scope": "Presentation chart and layout checks above describe the previously verified agent build. The current presentation was edited by the user and preserved unchanged during the title revision."
+  },
+  "presentation_pdf_export": {
+    "source_pptx": "output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx",
+    "source_sha256": "c419b0d804a57919a3c843e2e65ea6b39ebf71274b50617d1948acb4cb6a8c57",
+    "output": "output/pdf/FTEC5660_AgentDojo_Final_Presentation.pdf",
+    "output_sha256": "a89daa50b1d1aef97b16908309f1616675783aec4a333b79ea69d05fd7c1d724",
+    "pages": 12,
+    "hidden_backups_excluded": true,
+    "exporter": "Bundled LibreOffice headless PDF export",
+    "all_12_pages_visually_reviewed": true,
+    "user_pptx_modified_by_export": false
   }
 }

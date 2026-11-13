@@ -392,3 +392,6 @@ runs/
 
 # Local PDF rendering and visual-review scratch files
 /course_project/tmp/
+
+# Microsoft Office temporary lock files
+~$*
