@@ -249,11 +249,8 @@ def build_report():
     return path
 
 def split_speech(text):
-    # Break a speech into two connected paragraphs at a natural sentence boundary.
-    s=re.split(r'(?<=[.!?]) +',text)
-    if len(s)<5:return [text]
-    mid=max(2,len(s)//2)
-    return [' '.join(s[:mid]),' '.join(s[mid:])]
+    # Preserve the writer's logical paragraphs instead of splitting by sentence count.
+    return [part.strip() for part in re.split(r'\n\s*\n',text.strip()) if part.strip()]
 
 def build_script():
     story=[];md=['# Recording script\n\nEnglish main text with Chinese translation\n']
@@ -262,7 +259,8 @@ def build_script():
         if i:story.append(PageBreak())
         story.extend([p(f'{i+1:02d}  {title}','page'),p('ENGLISH','label')])
         for para in split_speech(en):story.append(p(para,'en'))
-        story.extend([Spacer(1,15),p('中文对照','cnlabel'),p(cn,'cn')])
+        story.extend([Spacer(1,15),p('中文对照','cnlabel')])
+        for para in split_speech(cn):story.append(p(para,'cn'))
         md.extend([f'## Slide {i+1}: {title}\n','### English\n', '\n\n'.join(split_speech(en))+'\n','### 中文对照\n',cn+'\n'])
         notes.append({'slide':i+1,'title':title,'english':en,'chinese':cn})
     path=OUT/'FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf'

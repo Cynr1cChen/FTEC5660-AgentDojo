@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-13T13:38:31.397039+00:00",
+  "created_utc": "2026-11-13T13:56:35.319967+00:00",
   "passed": true,
   "deliverables": [
     {
@@ -9,20 +9,20 @@
     },
     {
       "path": "output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx",
-      "sha256": "959e151a37ddad5e27c3da6479f30bc15563252ba086ad5db5e1dfbe4eaf7071",
-      "bytes": 1910359
+      "sha256": "440f4ca1cd2dc96de71d8807b0afc4300350afa3436ba609d25402561d49bf53",
+      "bytes": 1911073
     },
     {
       "path": "output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf",
-      "sha256": "eec66ec9170310570aff882aac75dcf5695bb0dd1ae2d90052a454d5b340a280",
-      "bytes": 301863
+      "sha256": "b174e98b1f8a902c50bca5792ce4d1530cfd47a374e8cfc547e2457e33a34b1a",
+      "bytes": 306407
     }
   ],
   "report_pages": 10,
   "presentation_main_slides": 12,
   "presentation_hidden_backup_slides": 3,
   "script_pages": 12,
-  "english_script_words": 1458,
+  "english_script_words": 1498,
   "script_has_target_duration_labels": false,
   "blank_identity_fields_verified": true,
   "native_editable_charts": 4,
@@ -170,7 +170,7 @@
       "file": "FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf",
       "page": 3,
       "min_x": 48.0,
-      "max_x": 548.4,
+      "max_x": 547.28,
       "max_bottom": 814.57
     },
     {
@@ -198,7 +198,7 @@
       "file": "FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf",
       "page": 7,
       "min_x": 48.0,
-      "max_x": 547.28,
+      "max_x": 548.4,
       "max_bottom": 814.57
     },
     {
@@ -219,7 +219,7 @@
       "file": "FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf",
       "page": 10,
       "min_x": 48.0,
-      "max_x": 548.4,
+      "max_x": 547.28,
       "max_bottom": 814.57
     },
     {
@@ -307,110 +307,110 @@
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-1.png",
-        "sha256": "ee5f8e102dca718d5c11c36e6b35f72150c5bdb21ee62568df3f98d5bfda64bc"
+        "sha256": "c144bafda666a23b3da96da45d93271206f1f174440359926a003d88a2ba9be4"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-10.png",
-        "sha256": "6eec3c4dc58e6144625d8682dbc36c96229ba9229dcfbe05c84c746c1f360f5f"
+        "sha256": "f90122a5f9759574019a2f366f87e328eda00b0c9513f22e6d0b2d210e5d9f94"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-11.png",
-        "sha256": "149a066f7fb42218a8af8e8f6ba87ce0db522ad5625d07be5bafb9d7c0428736"
+        "sha256": "a5b6e4860bc8086feb65707fc0aff058cc57b0ac1954f15639c517f1601b7555"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-12.png",
-        "sha256": "4aa332e95b133f93f558cde403d6402c85e7ef27bdadacef7af71fd7fb10455d"
+        "sha256": "e5f98b859df65136a1899e34f8b2ed8217e7ce134ad7e9c3c54b33d5a5efb06e"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-2.png",
-        "sha256": "326c5cfa2cf07b89c91eddf0c17f789c1378d674fd63dc647baf744efb2836db"
+        "sha256": "23424a20067c53218bece01068f18b8005299d74454c8afa54850531e3d9529c"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-3.png",
-        "sha256": "228264bce1ece7cee374e9df80d69bb5c0c159e9316ab520d5b709f1c3cf08ca"
+        "sha256": "2df90e32c08a10f3b0f9d91a5dddbe5d73d84308be62e059bc2416031897c4b2"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-4.png",
-        "sha256": "a7ee910fc8ae30b9340e6e52296fd7e46731268af17c41d74bd3ee8d7a1d4bb5"
+        "sha256": "fa4ab29f851af0b95d1508655ffe583c734e9fec732d782e8f1862be0baa2f5d"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-5.png",
-        "sha256": "8a557f8d1ad4b87924e94319195e2b1d18dbe9f671ae1b309050a1f72577507f"
+        "sha256": "fe2480ec4d0055a264fc3d730daa3dc53940d3422e0cf720899aadd671623ec6"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-6.png",
-        "sha256": "8072fb1b13a4bbd6c169023520910c274dfb49ec68651e5698fc0f3d922b8289"
+        "sha256": "0ac9f46f436b0195394b2df0e8a72805ccc13aecc2fd85bb77fe3b5a03daa318"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-7.png",
-        "sha256": "9fed385ddb21c7a9f5150f9ceabc9e72149419708f7cf67a8abf86fc17f7553a"
+        "sha256": "9e13e6820c09e27742d709c0afa7caa958e1ea05f7ec42fc1d7227c56ef37ec6"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-8.png",
-        "sha256": "eca9b3ac2a77231eaf088e6e64ec31808a7e31ba65bcf64a9bd3235ab38704c7"
+        "sha256": "d92a3026fb7572c4359a6858ef85ba5065c0dafce43d5a4049d1c64ad16f6551"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-9.png",
-        "sha256": "3d69e4b618551e9acb27b45f9af3cf561bb3370b5a8a771386297667eec53d75"
+        "sha256": "cd6879ee4279fce8df95221a6138903c5ec23af3e2d77843aa0da1c0d62e4f42"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-1.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-1.png",
         "sha256": "ad4d472a4db2210112dfc944c144f5d5ebf3cb39b11c1642cd251586fc850336"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-10.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-10.png",
         "sha256": "01eca84d9594991f56ad08ba4afea35ee7b5176ca61ee60098be16f2a81df8b8"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-11.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-11.png",
         "sha256": "d22b62ee92254ac6d21bdc77bbd0a3e1a949d9e4f7958a43eb71842d1cba6156"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-12.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-12.png",
         "sha256": "29fbd2a0d0f55a0da43760e1b4e18add914af4660b13b77cee12dd5bba755ebc"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-13.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-13.png",
         "sha256": "4c99a044a30d883e98945c9b63633abce06802527589ad9bad195ee9de7865b7"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-14.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-14.png",
         "sha256": "1fb635bb3232b3a71a9e94b8187267766dcd1f33a18ed49eaace201964ed1657"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-15.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-15.png",
         "sha256": "326afec5f384a8babfec679088926419249c4a5509f4ddf5918be2c365b4397f"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-2.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-2.png",
         "sha256": "150f7dad77435f76417fb0236e29e686dcb669a93f5fa552473c014f094aabf6"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-3.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-3.png",
         "sha256": "28ffb7f94d3ae5b404accbeec8356ee0053a3ff7b2c36a686f236e82d8c8a9e7"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-4.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-4.png",
         "sha256": "10d4631d62fdb84609ac884db4afe604895a52ea68ae03088a3683e48f329c6a"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-5.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-5.png",
         "sha256": "9bfb5edbc017dce25f7f5483a7d4242b874f2dbf2b4c4b725b0ec4c98ed3583b"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-6.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-6.png",
         "sha256": "ca24a217c6a3596ed52f9fcec39378345242dbc2c14290c330ed48046ff8f658"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-7.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-7.png",
         "sha256": "e7621c89607a15c2d1ae63c2a565f6d38dc8281a78ade6cc468e87c257876daa"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-8.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-8.png",
         "sha256": "68f5acd0ca6ab8efaa21563566ce25c445a8ed7c53ca536bd7c88ce23a51840a"
       },
       {
-        "file": "course_project/materials_v2/build/final/rev05/final_previews/slide-9.png",
+        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-9.png",
         "sha256": "75bce538a74b669f5885532b67209e71857dbc1b57865b6c74db7b81d9991ce6"
       }
     ]

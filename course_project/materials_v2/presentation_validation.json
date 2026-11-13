@@ -1,7 +1,7 @@
 {
   "schemaVersion": "presentation-finalization.v1",
-  "finalSha256": "959e151a37ddad5e27c3da6479f30bc15563252ba086ad5db5e1dfbe4eaf7071",
-  "byteCount": 1910359,
+  "finalSha256": "440f4ca1cd2dc96de71d8807b0afc4300350afa3436ba609d25402561d49bf53",
+  "byteCount": 1911073,
   "packageIntegrity": {
     "chart_count": 4,
     "claim_boundary": "Structural package checks only; no slide text, notes, formulas, chart values, or native PowerPoint execution were inspected.",
@@ -1144,7 +1144,7 @@
     "performed": true,
     "passed": true,
     "slideCount": 15,
-    "sha256": "959e151a37ddad5e27c3da6479f30bc15563252ba086ad5db5e1dfbe4eaf7071",
+    "sha256": "440f4ca1cd2dc96de71d8807b0afc4300350afa3436ba609d25402561d49bf53",
     "runtimeNodeModules": "/Users/Admin1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules",
     "nodeExecutable": "/Users/Admin1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
   },
@@ -1229,7 +1229,7 @@
     "native_chart_count": 4,
     "native_powerpoint_verified": false,
     "passed": true,
-    "presentation_sha256": "959e151a37ddad5e27c3da6479f30bc15563252ba086ad5db5e1dfbe4eaf7071",
+    "presentation_sha256": "440f4ca1cd2dc96de71d8807b0afc4300350afa3436ba609d25402561d49bf53",
     "schema_version": "presentation-native-chart-titles.v1",
     "slide_count": 15,
     "source_text_emitted": false,
@@ -1280,8 +1280,12 @@
       "failed_slides": [],
       "formal_human_reviewed": false,
       "native_application_open_verified": false,
-      "package_sha256": "959e151a37ddad5e27c3da6479f30bc15563252ba086ad5db5e1dfbe4eaf7071",
+      "package_sha256": "440f4ca1cd2dc96de71d8807b0afc4300350afa3436ba609d25402561d49bf53",
       "passed": true,
+      "required_embedded_workbook_slides": [
+        5,
+        9
+      ],
       "results": [
         {
           "approved_source_figure_exception": false,
@@ -1353,6 +1357,7 @@
       "schema_version": "owner-private.quantitative-chart-native-gate.v1",
       "slide_count": 15,
       "source_attachments_accessed": false,
+      "target_application": "portable",
       "validated_slide_count": 2
     },
     "exitCode": 0,
@@ -1361,61 +1366,10 @@
       5,
       9
     ],
-    "approvedSourceFigureExceptionSlides": []
-  },
-  "chartDataPackaging": {
-    "conversion": "chart_data_snapshot",
-    "converted_chart_count": 4,
-    "converted_charts": [
-      {
-        "chart_part": "ppt/slides/charts/chart1.xml",
-        "owner_slide": 5,
-        "point_count": 3,
-        "series_count": 1,
-        "workbook_part": "ppt/embeddings/chart-data-snapshot-001.xlsx"
-      },
-      {
-        "chart_part": "ppt/slides/charts/chart2.xml",
-        "owner_slide": 5,
-        "point_count": 3,
-        "series_count": 1,
-        "workbook_part": "ppt/embeddings/chart-data-snapshot-002.xlsx"
-      },
-      {
-        "chart_part": "ppt/slides/charts/chart3.xml",
-        "owner_slide": 9,
-        "point_count": 2,
-        "series_count": 1,
-        "workbook_part": "ppt/embeddings/chart-data-snapshot-003.xlsx"
-      },
-      {
-        "chart_part": "ppt/slides/charts/chart4.xml",
-        "owner_slide": 9,
-        "point_count": 2,
-        "series_count": 1,
-        "workbook_part": "ppt/embeddings/chart-data-snapshot-004.xlsx"
-      }
-    ],
-    "detected_chart_owner_slides": [
+    "approvedSourceFigureExceptionSlides": [],
+    "requiredEmbeddedWorkbookChartOwnerSlides": [
       5,
       9
-    ],
-    "experimental": true,
-    "input_sha256": "109d389f9dbc5930d7e70b3e7d8a36b557af513c5e176e3ad64c8cc6300f567c",
-    "new_formulas_describe_snapshot_only": true,
-    "output_bytes": 1910359,
-    "output_sha256": "959e151a37ddad5e27c3da6479f30bc15563252ba086ad5db5e1dfbe4eaf7071",
-    "portable_chart_validation_passed": true,
-    "portable_validated_owner_slides": [
-      5,
-      9
-    ],
-    "preserved_existing_workbook_chart_count": 0,
-    "preserved_existing_workbook_charts": [],
-    "schema_version": "experimental.literal-chart-workbook-snapshot.v1",
-    "source_formula_required_slides": [],
-    "source_formulas_preserved": false,
-    "source_workbook_preserved": false,
-    "source_workbook_required_slides": []
+    ]
   }
 }

@@ -6,142 +6,210 @@ English main text with Chinese translation
 
 ### English
 
-Imagine asking an assistant to refund a payment. It spots a malicious instruction in the transaction record and refuses to follow it.
+Let me start with a simple situation. You ask an assistant to refund a payment, and it notices a malicious instruction hidden in the transaction record. It refuses that instruction, which sounds like a successful defense. But then it stops, and your refund never happens.
 
-The attack fails, but the refund still never happens. This project examines that gap: how an agent can protect the workflow and still finish the task the user asked for. I reproduce AgentDojo, test one bounded review step, and then use transfer and authorization experiments to understand both its gains and its failures.
+That gap is what led me to this project. Using AgentDojo, I investigated whether one bounded review could help the agent finish the legitimate task, and then followed the results to understand where that approach breaks down.
 
 ### 中文对照
 
-设想你让一个助手退回一笔款项。它发现交易记录里夹带了恶意指令，并拒绝执行。攻击失败了，但退款也没有完成。这个项目研究的正是这个断点：Agent如何在保护工作流程的同时，完成用户真正要求的任务。我复现了AgentDojo，测试一次有边界的任务复核，再通过跨场景和授权实验，解释它的收益与失败。
+我想先从一个很简单的情境说起。你让一个助手退回一笔款项，它发现交易记录里藏着恶意指令，于是拒绝执行。听起来，防御已经成功了。但接下来，它却停住了，你要的退款也没有完成。
+
+正是这个断点，让我开始了这项研究。我以AgentDojo为基础，检验增加一次有边界的复核，能否帮助Agent继续完成合法任务，再沿着实验结果，追问这种做法会在什么地方失效。
 
 ## Slide 2: A refund, an injection and an unfinished task
 
 ### English
 
-Here is the workflow behind that example. The original user asks for a refund. The agent reads transaction data and finds the incoming ten-euro payment. But the transaction subject also tells it to change the recipient of a different payment.
+If we follow the example on the left, the agent finds an incoming ten-euro payment, just as the user requested. The problem is that the same record also tells it to change the recipient of another payment.
 
-That is where the trust boundary matters: the record supplies business facts, but it cannot grant new authority. In a saved run, the agent identifies the injection correctly and rejects it. It then asks the user to confirm the refund again, even though the original request already authorized it. So we need to measure two outcomes separately: whether the attacker gets what it wants, and whether the user gets the requested work done.
+The diagram on the right shows the distinction it needs to make. Transaction data can tell the agent how much arrived and who sent it, but it cannot authorize an unrelated account change. In the saved run, the agent understands that distinction well enough to reject the injection. Yet it then asks the user to confirm the refund again.
+
+So, throughout the experiments, I kept two questions separate: did the attacker succeed, and did the agent actually finish the user's task? Here's how I measured them.
 
 ### 中文对照
 
-这张图展示了刚才案例的实际流程。用户原本要求退款，Agent读取交易记录，找到了收到的10欧元。但交易备注还要求它修改另一笔付款的收款人。这里存在明确的信任边界：交易记录可以提供业务事实，却不能增加新的操作授权。在保存的运行中，Agent正确识别并拒绝了注入，却又要求用户重新确认已经提出的退款。因此，攻击者是否达成目标，以及用户的任务是否完成，必须分开测量。
+顺着左边的例子看，Agent按照用户的请求，找到了收到的10欧元。问题在于，同一条记录还要求它修改另一笔付款的收款人。
+
+右边的图展示了它必须分清的两件事：交易数据可以告诉它收到了多少钱、是谁付的，却不能授权它修改无关账户。在保存的运行中，Agent确实分清了这一点，也拒绝了注入；但随后，它又要求用户重新确认退款。
+
+因此，在整个实验中，我始终分开考察两个问题：攻击者有没有成功，以及Agent有没有真正完成用户的任务。接下来，我先说明怎样测量这两件事。
 
 ## Slide 3: Reproduction design and evaluation
 
 ### English
 
-I use the authors' executable tools and stateful environments, with DeepSeek Flash replacing the paper's models. The main experiment covers six banking tasks, three arms and three repeated trials. Each arm receives clean cases and two matched attack goals. The arms are the native baseline, the authors' prompt-repetition defense, and bounded review. The metrics distinguish user-task success, attacker success and strict safe completion, which adds explicit state checks.
+I started with the authors' executable tools and stateful environments, replacing the original models with DeepSeek Flash. For the main comparison, I used six banking tasks and three approaches: the native agent, the authors' prompt-repetition defense, and my bounded review. Each approach faced clean cases and two matched attack goals, with three repeated trials and identical attack text within each condition.
 
-This matters because a rent update can pass the amount check while also changing the recipient maliciously. The task and scorer audit comes before formal sampling. These are controlled local comparisons on fixed tasks, and the later studies retain separate protocols and denominators. Within each condition, the arms receive the same attack text. The three trials repeat the fixed tasks, so their variation describes model runs rather than three independent datasets.
+Before running that comparison, though, I checked what the scores actually meant. A rent update, for example, can pass the amount check even if the agent also changes the recipient maliciously. That's why I measured user-task success and attacker success separately, then added explicit state checks for strict safe completion.
+
+With those measurements in place, I could test a small change to the workflow.
 
 ### 中文对照
 
-实验使用作者的可执行工具和有状态环境，以DeepSeek Flash替代论文中的模型。主实验包含六道银行任务、三个方案和三次重复。每组都有正常条件和两个配对的攻击目标。三个方案分别是原版、作者的重复用户提示防御，以及有边界复核。指标区分用户任务成功、攻击成功，以及加入额外状态检查的严格安全完成。这样做很重要，因为租金金额改对了，恶意收款人修改仍可能同时成功。任务和评分器审查在正式采样前完成。这些是固定任务上的本地对照，后续各项研究保留各自的协议和分母。 每个条件下，各方案接收相同的攻击文本。三次重复使用固定任务，因此方差描述的是模型运行差异，而非三个独立数据集。
+我先使用作者提供的可执行工具和有状态环境，把原模型替换为DeepSeek Flash。主对照实验选取六道银行任务，比较原版Agent、作者的重复用户提示防御，以及我加入的有边界复核。每个方案都有正常条件和两个配对的攻击目标，各重复三次；同一条件下，各方案接收相同的攻击文本。
+
+不过，在正式运行前，我先检查了这些分数到底代表什么。比如，一次租金修改可能通过金额检查，但Agent同时也恶意修改了收款人。因此，我把用户任务成功与攻击成功分开统计，再加入明确的状态检查，得到严格安全完成指标。
+
+有了这套测量方式，接下来就可以检验工作流程中的一个小改动。
 
 ## Slide 4: Bounded task review
 
 ### English
 
-The main change is deliberately small. When the native agent stops, one review asks it to reread the original request and check for unfinished authorized work. If the necessary facts are already available, it continues through the existing tools. It preserves unspecified fields, avoids duplicate writes and still asks when information is truly missing. The review shares the remaining tool budget and never sees evaluation scores or reference actions.
+The change is to add one review when the native agent stops. At that point, the agent rereads the original request and checks whether any authorized work remains unfinished. If the facts are already available, it continues through the existing tools. If something essential is genuinely missing, it can still ask the user.
 
-In the refund example, the agent initially asks for confirmation. After review, it sends the ten euros back to the original sender. The recipient and amount come from the observed transaction. This gives us a concrete execution change to inspect, rather than judging the method only by its final wording. Crucially, the review runs because the native invocation stopped. An evaluator never tells it that the task failed, and it cannot use a reference answer to decide what to do.
+Importantly, this uses the remaining tool budget rather than starting a new one. It also asks the agent to preserve unspecified fields and avoid repeating completed writes, without giving it scores or reference answers.
+
+Now, remember the refund. Before review, the agent asks for confirmation. After review, it sends the ten euros back to the original sender using the transaction it already found. That gives us a concrete example of recovery. The next step was to see whether it happened consistently.
 
 ### 中文对照
 
-主修改刻意保持简单：原版Agent停止后，增加一次复核，要求它重读原始请求，检查还有哪些已获授权的工作没有完成。如果必要事实已经具备，就通过现有工具继续执行，同时保留未指定字段、避免重复写入；信息确实缺失时，仍然询问用户。复核使用剩余工具预算，看不到评分或标准动作。在退款案例中，Agent起初要求确认，复核后则向原付款人退回10欧元。收款人和金额来自实际读到的交易记录。这样，我们可以检查具体执行发生了什么变化。 关键在于，复核只依据原流程已经停止这一事实触发。评分器不会告诉它任务失败，它也不能依据标准答案决定下一步。
+这个改动，就是在原版Agent停止时增加一次复核。到了这一步，Agent会重读原始请求，检查是否还有已经获得授权、却没有完成的工作。如果必要事实已经具备，就通过现有工具继续执行；如果确实缺少关键资料，仍然可以询问用户。
+
+这里有一个重要约束：它使用剩余的工具预算，而不是重新获得一套预算。同时，提示要求它保留未指定字段，避免重复已经完成的写操作，也不会向它提供评分或标准答案。
+
+再回到刚才的退款例子。复核前，Agent要求确认；复核后，它依据已经找到的交易，向原付款人退回了10欧元。这样，我们就有了一个具体的任务恢复实例。接下来要检验的，是这种恢复能否稳定地出现在更多运行中。
 
 ## Slide 5: Banking results and the neutral control
 
 ### English
 
-The two panels show separate studies. In the original six-task experiment, attacked safe completion is 36.11 percent for baseline, 50 percent for prompt repetition and 86.11 percent for review. All three arms have zero attacker success. The gain is therefore useful completion. The later study asks whether any extra chance to continue would do just as well. With the same continuation budget and shared date context, baseline completes eighteen of thirty-six attacked cases, neutral continuation twenty-five, and review thirty-five.
+On the left, safe completion under attack rises from 36.11 percent for baseline to 86.11 percent for review, with prompt repetition at 50 percent. Since attacker success is zero in every arm, what improves here is completion of the user's work.
 
-So the review contributes more than an additional turn alone. Replaying those same review trajectories gives seventeen completions before review and thirty-five afterward, with no losses. Stricter timing checks and removal of the questionable fee task narrow the advantage. The overall result is positive, while its size depends on what counts as a correct business action. A separate three-task transfer follow-up also supplies an explicit simulation date. Review reaches 94.44 percent, and the new payment dates match that date. That follow-up stays separate from both panels.
+That raised a follow-up question: perhaps the agent simply needed another chance to continue. The separate study on the right tests that explanation. With the same continuation budget and date context, baseline completes eighteen of thirty-six attacked cases, neutral continuation twenty-five, and review thirty-five. So the review adds more than an extra turn alone. Replaying those same review trajectories also shows completion increasing from seventeen to thirty-five, with no losses.
+
+Timing-preservation checks and excluding the questionable fee task narrow the advantage. A separate dated-transfer follow-up reaches 94.44 percent for review. Taken together, these results support the banking gain, but they also make the next question important: what happens outside banking?
 
 ### 中文对照
 
-两个图对应独立研究。原六题实验中，受攻击条件下安全完成率分别为36.11%、50%和86.11%，三组攻击成功数都是零。因此，提升体现为完成了更多有用工作。后来的研究进一步追问：只是多给一次继续执行的机会，是否就能达到同样效果？在相同续行预算和统一日期下，原版完成18/36，中性续行25/36，复核35/36。因此复核的作用超过单纯增加一轮。同一条复核轨迹重放显示，复核前完成17例，之后35例，没有回退。更严格的时间字段检查，以及剔除存在业务争议的费用题，会缩小优势。结果方向明确，但收益大小取决于怎样定义正确的业务操作。 另一项三题转账补充实验统一提供了模拟日期。复核达到94.44%，新增付款日期也与给定日期一致。这项补充实验与图中的两组结果分别报告。
+先看左图。受攻击条件下，安全完成率从原版的36.11%提高到复核版的86.11%，重复提示防御则是50%。由于三组的攻击成功数都是零，这里的改善，具体体现为完成了更多用户要求的工作。
+
+这也引出了一个后续问题：Agent会不会只是需要再多一次继续执行的机会？右边的独立研究就是用来检验这个解释的。在相同的续行预算和日期条件下，原版完成18/36，中性续行25/36，复核35/36。所以，复核的作用超过单纯增加一轮。对同一批复核轨迹进行重放，也能看到完成数从17例增加到35例，而且没有损失已经完成的任务。
+
+要求保留时间字段、以及剔除存在业务争议的费用题后，优势会缩小。另一项统一日期的转账补充实验中，复核达到94.44%。合起来看，这些证据支持银行任务中的收益，也自然引出了下一个问题：离开银行场景以后，情况又会怎样？
 
 ## Slide 6: Review can replace a useful answer
 
 ### English
 
-The next question is transfer. Workspace, the initial Travel calendar subset and Slack all reach a ceiling: the baseline already completes every tested attacked case. More complex Travel tasks reveal a different result. Review completes twelve of eighteen attacked cases, compared with fourteen for baseline. The example on this slide explains why.
+I first expanded to Workspace, Travel calendar tasks and Slack, but the baseline already passed every tested attacked case in those subsets. That left no room to demonstrate a gain, so I moved to more complex Travel tasks, where review actually performed worse: twelve of eighteen attacked cases completed, compared with fourteen for baseline.
 
-The original answer contains the restaurant and hotel addresses. The review says those details were already supplied, but the final answer omits them. Across the same saved trajectories, completion drops from twenty-two of twenty-seven to sixteen. A follow-up keeps the original answer when review makes no new tool proposal. It reaches twenty-two of twenty-seven, matching baseline. This branch ends with a clear lesson: recovery of actions and revision of informational answers need different output handling.
+The example shows what went wrong. The original answer includes both requested addresses. During review, however, the agent says it already provided those details and replaces the answer with a confirmation that omits them. Across those same review trajectories, completion falls from twenty-two of twenty-seven to sixteen.
+
+Keeping the original answer when review proposes no new tool call avoids that replacement. In a fresh follow-up, it matches baseline at twenty-two of twenty-seven. This explains why action recovery and informational answers need different output handling.
 
 ### 中文对照
 
-接下来检验跨场景表现。Workspace、最初的Travel日历子集和Slack都出现天花板：原版已经通过全部受攻击案例。更复杂的Travel任务则揭示了不同结果：复核完成12/18，原版14/18。图中的案例解释了原因。原回答包含餐厅和酒店地址，复核说这些信息已经提供，最终答案却把地址省略了。同一批保存轨迹的完成数从22/27降至16/27。后续尝试在复核没有提出新工具操作时保留原答案，达到22/27，与原版相同。这条支线因此得到明确结论：操作恢复和信息型答案修订，需要不同的输出处理。
+我先把测试扩展到Workspace、Travel日历任务和Slack，但在这些子集中，原版已经通过全部受攻击案例，没有空间展示进一步提升。于是，我又选择了更复杂的Travel任务。这一次，复核反而表现更差：受攻击条件下完成12/18，而原版是14/18。
+
+图中的例子说明了问题出在哪里。原回答本来包含用户要求的两个地址；但复核时，Agent认为自己已经给过这些细节，就把完整回答替换成了一段确认，结果地址反而被省略了。在同一批复核轨迹中，完成数因此从22/27降至16/27。
+
+针对这个问题，我尝试在复核没有提出新工具调用时保留原答案。新的补充运行达到22/27，与原版相同。这样，这条支线就解释清楚了：操作恢复和信息型回答，需要不同的输出处理方式。
 
 ## Slide 7: Authorization controls: protection and completion
 
 ### English
 
-To test actual interception, I introduce stronger parameter attacks hidden inside plausible landlord notices. A semantic checker can accept that business framing and allow the wrong recipient. A full permission compiler prevents the specified attacks, but clean completion falls from eleven of fifteen to six. A narrower hard rule protects recipient and password values using the original request. In a fresh comparison it records zero attacker successes and seven actual denied calls.
+Alongside that transfer question, I also wanted direct evidence that the system could intercept a malicious operation. For that, I used stronger attacks that disguised a recipient change as part of a landlord notice.
 
-Replaying each call on its exact pre-operation state confirms that all seven would achieve the attacker goal. That is direct evidence of local interception. Yet attacked rent completion remains zero out of twelve. The system blocks the bad update and still fails to perform the supported amount adjustment. That remaining gap motivates the final experiment.
+A semantic checker could still accept that business framing. Compiling a full permission list prevented the specified attacks, but clean completion fell from eleven of fifteen to six. I therefore tried narrower hard rules, checking protected recipient and password values against the original request.
+
+In a fresh comparison, this produced zero attacker successes and seven actual hard denials after semantic approval. Replaying each denied call on its saved pre-operation state showed that all seven would achieve the attacker goal. That establishes local interception. But rent completion under attack remained zero out of twelve, so blocking the harmful update still wasn't enough to finish the task. That became the focus of the final experiment.
 
 ### 中文对照
 
-为了测试真实拦截，我增加了藏在貌似合理的房东通知中的参数攻击。语义检查器会被业务表述说服，放行错误收款人。完整权限清单阻止了指定攻击，但正常完成数从11/15降至6/15。更窄的硬规则依据原请求保护收款人和密码值。在一次新的对照中，它保持零攻击成功，并留下七次实际拒绝。把每次调用放回对应的操作前状态执行，七次都会达成攻击目标，这是局部拦截的直接证据。然而，受攻击租金任务仍为0/12。系统挡住了坏修改，却没有完成可执行的金额调整。最后一轮实验就针对这个断点。
+除了跨场景表现，我还希望获得直接证据，说明系统确实能够拦截恶意操作。为此，我使用了更强的攻击，把收款人修改伪装成房东通知中的正常业务要求。
+
+语义检查器仍会接受这种业务表述。把允许的操作编译成完整权限清单，虽然阻止了指定攻击，但正常完成数也从11/15降至6/15。因此，我进一步尝试更窄的硬规则，依据原始请求检查受保护的收款人和密码值。
+
+在一次新的对照中，这个方案保持零攻击成功，并且留下七次先通过语义检查、再被硬规则实际拒绝的调用。把每次调用放回对应的操作前状态执行，七次都会达成攻击目标。这就建立了局部拦截的直接证据。不过，受攻击租金任务仍然是0/12：挡住有害修改以后，任务还是没有完成。这个断点，就成了最后一轮实验的重点。
 
 ## Slide 8: A shared authorization policy
 
 ### English
 
-The trace review finds inconsistent reasoning between components. One checker rejects the recipient change, then rejects an amount-only proposal for failing to follow that same change. The final candidate gives the actor and checker one shared policy. It asks them to complete supported ordinary work while leaving protected changes pending when authority is absent. The existing hard rules and tool loop remain in place.
+Looking back through the rent traces, I found an inconsistency between components. A checker could reject the recipient change, then reject an amount-only update because it omitted that very change.
 
-There is no extra recovery step or automatic parameter repair. Before calling the model, I freeze one candidate and forty-eight runs: two arms, three trials, attacked and clean rent cases, and legitimate address, password and compound-task controls. The comparator is the previous guarded policy, so the experiment directly tests this policy repair. In the rent case, this means updating the supported amount while preserving the existing recipient, date and recurrence. The protected account substitution stays pending until the original user supplies authority.
+To address this, I gave the actor and checker one shared policy: complete supported ordinary work while leaving protected changes pending when authority is missing. For rent, that means adjusting the supported amount while preserving the recipient, date and recurrence. The hard rules and existing tool loop stay unchanged, with no additional recovery stage or automatic parameter repair.
+
+I then froze one candidate and forty-eight runs, covering rent and legitimate address, password and compound-task controls over three trials. Here, the comparator is the previous guarded policy, which lets us examine this repair directly. Let's look at the result.
 
 ### 中文对照
 
-轨迹审查发现了组件间的解释矛盾：检查器先拒绝修改收款人，随后又因为仅改金额的提案没有执行这项修改而拒绝它。最终候选让执行Agent和检查器共享一套策略：完成有事实支持的普通工作，缺少授权的受保护变更继续等待确认。原硬规则和工具循环保留，不增加额外复核，也不自动修补参数。调用模型前，固定一个候选和48次运行，覆盖两个方案、三次重复、受攻击及正常租金，以及地址、密码和复合正常控制。对照组是上一版受保护策略，因此这一轮直接检验策略修复。 对租金案例而言，就是完成有支持的金额调整，同时保留原收款人、日期和周期。受保护的账户替换仍需原用户提供授权。
+回过头检查租金轨迹时，我发现了组件之间的一处矛盾：检查器可能先拒绝修改收款人，随后又因为仅改金额的提案没有执行同一项收款人修改，而再次拒绝它。
+
+针对这个问题，我让执行Agent和检查器共享同一套策略：完成有事实支持的普通工作，缺少授权的受保护变更则继续等待确认。对于租金案例，就是调整有支持的金额，同时保留收款人、日期和周期。原有硬规则和工具循环保留，不增加额外恢复步骤，也不自动修补参数。
+
+随后，我固定了一个候选和48次运行，覆盖租金，以及地址、密码和复合正常控制，各重复三次。这里的对照组是上一版受保护策略，因此可以直接检验这项修复。接下来，我们一起看它的结果。
 
 ## Slide 9: Local repair and legitimate-task losses
 
 ### English
 
-The result has two equally important sides. Attacked rent strict safe completion rises from zero to twelve out of twelve, while both arms keep zero attacker success. The new agent directly proposes the amount-only update, so these twelve completions come from better planning rather than twelve new interceptions. At the same time, other legitimate controls fall from nine out of nine to five.
+Starting with rent, the shared policy raises strict safe completion from zero to twelve out of twelve, while both arms retain zero attacker success. The agent now proposes the amount-only update directly, so the improvement comes from better planning, rather than twelve new interceptions.
 
-Address updates remain complete, one conditional password task fails, and all three compound moving tasks remain incomplete. Including clean rent, overall clean completion falls from nine of twelve to eight. I therefore retain the shared policy as a local experimental repair. Its normal-task cost prevents it from replacing the main method globally.
+However, the same policy reduces the other legitimate controls from nine of nine to five. Address updates still complete, but one conditional password case and all three compound moving cases fail to finish. Even after including the clean rent improvement, overall clean completion falls from nine of twelve to eight.
+
+That combination led me to keep the shared policy as a local repair, rather than a global replacement. To understand the cost, though, we need to look more closely at how the agent interpreted the user's authority.
 
 ### 中文对照
 
-结果有两个同等重要的方面。受攻击租金的严格安全完成从0/12升至12/12，两组仍保持零攻击成功。新Agent直接提出仅修改金额的操作，所以这12次完成来自更好的规划，而非新增12次拦截。与此同时，其他正常控制从9/9降至5/9。地址更新全部完成，一次条件式改密失败，三次搬家复合任务都未完整完成。把正常租金也算入后，全部正常完成数从9/12降至8/12。因此我保留共享策略作为局部实验修复，正常任务代价使它不适合全局替代主方法。
+先看租金结果。共享策略把严格安全完成从0/12提高到12/12，同时两组仍保持零攻击成功。现在，Agent会直接提出仅修改金额的操作，因此，这里的改善来自更好的规划，而不是新增了12次拦截。
+
+不过，同一套策略也把其他正常控制的完成数从9/9降到了5/9。地址更新依然全部完成，但一次条件式改密，以及三次搬家复合任务，都没有完整完成。即使算上正常租金的改善，全部正常条件的完成数仍从9/12降至8/12。
+
+正是这组同时存在的收益和代价，让我决定把共享策略保留为局部修复，而不全局替换原方案。不过，要解释这项代价，还需要进一步看Agent到底怎样理解了用户的授权。
 
 ## Slide 10: Valid user authority gets misread
 
 ### English
 
-Why do those normal cases fail? The original moving request explicitly gives the landlord's account and rent. The model still treats the account as second-hand information and asks for confirmation. I check all two hundred and thirty-four actual requests.
+Notice the original request on the left: the user explicitly supplies the new landlord's account and rent. Yet, on the right, the model treats that account as second-hand information and asks for confirmation again.
 
-The original query is intact, both components receive the policy, and the unchanged hard rule would allow the requested value. The affected operation never reaches that rule. The failure occurs earlier, when the model interprets the user's authority too narrowly. This distinguishes a restrictive rule from a model's mistaken use of the rule, and explains why stronger authorization language can protect one workflow while obstructing another.
+I checked all two hundred and thirty-four actual requests to find out whether information had gone missing. It hadn't: the original query was intact, both components received the policy, and the existing hard rule would allow the requested value. Instead, the model withheld the affected operation before the rule could evaluate it.
+
+So the remaining failure was an overly narrow interpretation of genuine user authority. Distinguishing that from an actual tool rejection is exactly why I kept the request-level records, as well as the final scores.
 
 ### 中文对照
 
-这些正常案例为什么失败？原搬家请求明确给出了房东账户和租金，模型仍把账户当成间接信息，要求再次确认。我核查了全部234份实际请求：原始请求完整，两个组件都收到策略，未改变的硬规则也会允许用户给出的值。受影响的操作根本没有进入那条规则。失败发生得更早，是模型把用户授权解释得过窄。这区分了规则本身的限制与模型对规则的误用，也解释了更强的授权表述为何能保护一类流程，却妨碍另一类流程。
+请注意左边的原始请求：用户已经明确给出了新房东账户和租金。但看右边，模型却把这个账户当成间接信息，要求用户再次确认。
+
+为了判断是不是信息在传输中丢失了，我核查了全部234份实际请求。结果表明，信息并没有丢失：原始请求完整，两个组件都收到了策略，现有硬规则也会允许用户要求的值。真正发生的是，模型在规则评估之前，就没有提出受影响的那项操作。
+
+因此，剩余失败来自对真实用户授权的过窄解释。为了分清这种情况与真正的工具拒绝，我才会在最终分数之外，保留请求层面的完整记录。
 
 ## Slide 11: Reproducible evidence
 
 ### English
 
-Every result links back to frozen protocols, saved model outputs, tool calls and before-and-after states. Four archives cover the completed research runs, and sixty relevant tests pass. Offline verification restores archived source and replays the saved execution with network access blocked. The same-system fresh environment also passes the recorded checks.
+Those records also make the findings checkable. The four archives connect frozen protocols and saved model responses to actual tool calls and before-and-after states. Offline verification replays that execution with the network blocked, while sixty relevant tests and the recorded fresh-environment checks support the implementation.
 
-The total of sixteen hundred and thirty-eight includes development and repeated conditions. The separate study results carry the scientific conclusions, while the archive volume describes the work available for inspection. A reviewer can inspect each proposal, see whether a gate actually rejected it, and recompute the resulting state. That separates observed execution evidence from a successful-sounding final response.
+The archives cover sixteen hundred and thirty-eight completed runs, including development and repeated conditions. Their value is that someone else can trace a result back to what the agent proposed, what a gate rejected and what actually changed.
+
+That gave me a basis for bringing the project to a close with an explanation of both the gains and the failures.
 
 ### 中文对照
 
-每项结果都能追溯到冻结协议、模型输出、工具调用和前后状态。四份档案保存了已完成的研究运行，60项相关测试通过。离线验证会恢复归档源码，在禁止联网的条件下重放保存的执行。同一系统的新虚拟环境也通过了记录中的检查。1638次运行包含开发和重复条件。科学结论来自各项独立研究的结果，档案总量则说明有哪些过程可以被检查。 复查者能够逐条检查操作提案、确认检查器是否真的拒绝过，并重新计算最终状态，从而区分实际执行证据与措辞上声称成功的回答。
+这些记录，也让研究结论能够被复查。四份档案把冻结协议、保存的模型回答、实际工具调用和前后状态连接起来。离线验证会在禁止联网的条件下重放这些执行，另外还有60项相关测试和已经记录的新环境检查，支持实现本身的可靠性。
+
+档案涵盖1638次完成运行，其中包括开发和重复条件。它们的价值在于，其他人能够从一个结果追溯回去，看清Agent提出了什么、检查器拒绝了什么，以及环境到底发生了什么变化。
+
+有了这些依据，我就能够带着对收益和失败的解释，让整个项目形成收束。
 
 ## Slide 12: Findings and practical implications
 
 ### English
 
-The project closes with three findings. Bounded review improves banking completion beyond a neutral continuation opportunity. Transfer depends on the task, and answer replacement explains the Travel regression.
+Putting it all together, bounded review improves the tested banking workflows beyond a neutral chance to continue. But the Travel result shows why I would treat informational answers differently: another review can remove details the user still needs.
 
-Execution rules can intercept malicious parameters, while consistent policy still has to preserve genuine user authority. I keep the positive banking result, the failed transfer repair and the shared-policy trade-off together. The research ends with an explained choice: bounded review remains the primary modification, and the final policy remains a local candidate with a documented cost. Thank you.
+The authorization experiments take that lesson further. Even when a rule intercepts malicious parameters, the agent still has to finish the allowed work and recognize authority the user genuinely supplied.
+
+My final choice is therefore to retain bounded review as the main modification and document the shared policy as a local repair with a clear cost. The project closes with a measured improvement and an explanation of where it stops helping. Thank you.
 
 ### 中文对照
 
-项目最终得到三项结论：有边界复核对银行任务的改善超过中性续行；跨场景效果取决于任务形式，答案替换解释了Travel回退；执行规则能够拦截恶意参数，而一致的策略还必须保留真实用户授权。我把银行的正面结果、未超过原版的迁移修复，以及共享策略的取舍共同保留。研究以一个有依据的选择收束：复核仍是主修改，最终策略保留为具有明确代价的局部候选。谢谢。
+把这些结果放在一起看，有边界复核对所测银行流程的改善，超过了单纯增加一次中性续行机会。不过，Travel结果也说明，信息型回答需要区别处理，因为再做一次复核，反而可能删掉用户仍然需要的细节。
+
+授权实验又把这个认识推进了一步：即使规则能够拦截恶意参数，Agent仍然需要完成被允许的工作，也需要识别用户已经真实给出的授权。
+
+因此，我最终保留有边界复核作为主要改动，把共享策略记录为具有明确代价的局部修复。这个项目以一个测量得到的改善，以及对它何时不再有效的解释，完成了闭环。谢谢。

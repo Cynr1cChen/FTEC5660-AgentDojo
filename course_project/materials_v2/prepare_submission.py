@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 from datetime import datetime,timezone
@@ -26,6 +27,8 @@ def main():
     upload.mkdir(parents=True,exist_ok=True);aux.mkdir(parents=True,exist_ok=True)
     accepted=json.loads((HERE/'delivery_validation.json').read_text())
     assert accepted['passed']
+    notes=json.loads((HERE/'speaker_notes.json').read_text())
+    spoken_words=sum(len(re.findall(r"\b[\w'-]+\b",n['english'])) for n in notes)
     roles={
       'FTEC5660_AgentDojo_Final_Report.pdf':('Required report attachment',upload),
       'FTEC5660_AgentDojo_Final_Presentation.pptx':('Recording aid; not separately required',aux),
@@ -77,7 +80,7 @@ Report attachment: FTEC5660_AgentDojo_Final_Report.pdf
 
 - 报告：10页，保留可填写的姓名和学号字段。
 - PPT：12页主讲加3页默认隐藏备用，约1.9 MB；封面身份信息待填写。
-- 讲稿：12页，英文正文1458词，下方中文对照，不含目标时长标签。
+- 讲稿：12页，英文正文{spoken_words}词，下方中文对照，不含目标时长标签。
 - 文本模板：两个链接尚未填写，不能原样当成完成版提交。
 
 归集时逐文件验证哈希，与已验收成品完全一致。`核对记录.json`记录来源、版本及检查范围。
@@ -120,7 +123,7 @@ GitHub提交采用项目链接，按课程要求不另附源码ZIP。
       'requirement_source':{'path':str(COURSE),'sha256':sha(COURSE),'submission_pages':[2,3],'deadline_page':1},
       'required_items':['Report attachment, at most 10 pages','Student GitHub repository link','Zoom recorded presentation link, at most 15 minutes'],
       'files':files,'report_pages':len(r.pages),'identity_fields_blank':blank_identity,
-      'presentation_main_slides':12,'presentation_hidden_backups':3,'script_english_words':1458,
+      'presentation_main_slides':12,'presentation_hidden_backups':3,'script_english_words':spoken_words,
       'repository':{'local_path':str(ROOT),'branch':branch,'head':head,'origin_is_author_repository':True,
                     'student_repository_url':None,'github_connector_account':'Cynr1cChen','repository_search_query':'user:Cynr1cChen agentdojo','agentdojo_repository_search_found':False},
       'credential_scan':scan,'zoom_url':None,'actual_zoom_duration_checked':False,

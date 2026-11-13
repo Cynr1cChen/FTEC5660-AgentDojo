@@ -11,5 +11,10 @@
   "status": "materials_organized_submission_pending",
   "source_head": "4577d6f845f6012aa61263427bdcf3f8c3a7b44e",
   "report_identity_blank": true,
-  "blackboard_submission_performed": false
+  "blackboard_submission_performed": false,
+  "last_material_update": {
+    "updated_utc": "2026-11-13T13:56:34.268771+00:00",
+    "reason": "Rewrite spoken narrative and synchronize PowerPoint notes",
+    "report_unchanged": true
+  }
 }
