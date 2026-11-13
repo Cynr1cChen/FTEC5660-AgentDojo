@@ -1,0 +1,21 @@
+{
+  "checked_date": "2026-11-13",
+  "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+  "currency": "CNY per million tokens",
+  "model": "deepseek-flash",
+  "offpeak": {
+    "cache_hit": 0.02,
+    "cache_miss": 1,
+    "output": 4
+  },
+  "peak": {
+    "cache_hit": 0.04,
+    "cache_miss": 2,
+    "output": 8
+  },
+  "weekday_peak_beijing": [
+    "09:00-12:00",
+    "14:00-18:00"
+  ],
+  "note": "Local guard uses conservative weekday windows; no holiday exception required on this run. Recorded model alias does not pin immutable weights."
+}

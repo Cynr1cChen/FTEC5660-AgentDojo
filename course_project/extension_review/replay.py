@@ -53,7 +53,7 @@ def worker(directory):
   from agentdojo.functions_runtime import FunctionsRuntime
   from agentdojo.default_suites.v1.tools import cloud_drive_client as drive,email_client as mail
   from agentdojo.types import get_text_content_as_str
-  tools=[m for m in t['messages'] if m['role']=='tool'];tool_index=[0]
+  tools=[m for m in t['messages'] if m['role']=='tool' and not str(m.get('error') or '').startswith('Action not executed:')];tool_index=[0]
   original_run=FunctionsRuntime.run_function;original_clock=drive.datetime;original_mail_clock=mail.datetime
   saved_states=read(d/f"episodes/{row['index']:03d}/states.json")
   final_state=saved_states[-1]['after']

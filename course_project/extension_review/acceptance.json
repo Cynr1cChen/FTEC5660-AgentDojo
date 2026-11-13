@@ -1,0 +1,159 @@
+{
+  "created_utc": "2026-11-13T04:20:48.177896+00:00",
+  "research_complete": true,
+  "report_authoring_started": false,
+  "cohorts": [
+    {
+      "run": "runs/extension/attack_development/20261112T182014700449Z",
+      "completed": 0,
+      "planned": 35,
+      "requests": 1,
+      "upper": 0.045748,
+      "audit": false
+    },
+    {
+      "run": "runs/extension/attack_development/20261112T182131493624Z",
+      "completed": 0,
+      "planned": 35,
+      "requests": 2,
+      "upper": 0.016186,
+      "audit": false
+    },
+    {
+      "run": "runs/extension/attack_development_v2/20261112T182249706134Z",
+      "completed": 35,
+      "planned": 35,
+      "requests": 127,
+      "upper": 1.263466,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/author_baselines_development/20261112T183354104461Z",
+      "completed": 24,
+      "planned": 24,
+      "requests": 89,
+      "upper": 0.621462,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/banking_control/20261112T182345061458Z",
+      "completed": 162,
+      "planned": 162,
+      "requests": 586,
+      "upper": 3.34345,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/parameter_confirmation/20261113T040244929913Z",
+      "completed": 45,
+      "planned": 45,
+      "requests": 149,
+      "upper": 0.732876,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/parameter_development/20261113T040002111101Z",
+      "completed": 0,
+      "planned": 10,
+      "requests": 1,
+      "upper": 0.02976,
+      "audit": false
+    },
+    {
+      "run": "runs/extension/parameter_development/20261113T040032581555Z",
+      "completed": 10,
+      "planned": 10,
+      "requests": 25,
+      "upper": 0.119522,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/routing_development/20261112T182618124693Z",
+      "completed": 10,
+      "planned": 10,
+      "requests": 36,
+      "upper": 0.357944,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/slack_development/20261112T182849718021Z",
+      "completed": 23,
+      "planned": 23,
+      "requests": 87,
+      "upper": 0.361154,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/travel_budget_continuation/20261113T041742131646Z",
+      "completed": 9,
+      "planned": 9,
+      "requests": 60,
+      "upper": 0.708164,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/travel_development/20261113T040157046862Z",
+      "completed": 17,
+      "planned": 17,
+      "requests": 65,
+      "upper": 0.755762,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/travel_formal/20261113T040431797526Z",
+      "completed": 72,
+      "planned": 81,
+      "requests": 376,
+      "upper": 4.442326,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/workspace_budget_continuation/20261112T212017158188Z",
+      "completed": 29,
+      "planned": 29,
+      "requests": 142,
+      "upper": 2.334912,
+      "audit": true
+    },
+    {
+      "run": "runs/extension/workspace_formal/20261112T183027899385Z",
+      "completed": 151,
+      "planned": 180,
+      "requests": 637,
+      "upper": 7.960632,
+      "audit": true
+    }
+  ],
+  "extension_completed": 587,
+  "extension_recorded_requests": 2383,
+  "extension_known_offpeak_cny": 2.1867779600000037,
+  "this_turn_completed": 153,
+  "this_turn_recorded_requests": 676,
+  "this_turn_known_offpeak_cny": 0.6679394000000008,
+  "this_turn_unknown_reservation_cny": 0.02976,
+  "project_conservative_upper_cny": 99.57610780000002,
+  "tests_passed": 43,
+  "original_evidence_reverified": true,
+  "materials_unchanged": true,
+  "limitations": [
+    "Only fixed tasks and same provider alias, three trials.",
+    "Parameter confirmation reuses development task and has delegated-source authorization ambiguity.",
+    "Travel formal tasks only calendar reminders; both external scene subsets show ceiling effects.",
+    "Fresh dependency reinstall not validated.",
+    "Package replay result is recorded separately in package_verification.json."
+  ],
+  "pending": [
+    "User research review",
+    "Update report/deck/Chinese script after approval",
+    "Identity fields",
+    "GitHub publication",
+    "Actual Zoom recording",
+    "Blackboard submission"
+  ],
+  "supplemental_package_verified": true,
+  "supplemental_package_sha256": "2222074308a14a699cb269337b0e60021768e8982ea530c54fcaf4addf08c116",
+  "all_recorded_request_starts_offpeak": true,
+  "recorded_request_times_checked": 2383,
+  "fresh_install_verified": false,
+  "acceptance_completed_utc": "2026-11-13T04:22:57.777649+00:00"
+}

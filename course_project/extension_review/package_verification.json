@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "created_utc": "2026-11-13T04:21:57.255666+00:00",
+  "archive_sha256": "2222074308a14a699cb269337b0e60021768e8982ea530c54fcaf4addf08c116",
+  "isolated_extract": true,
+  "network_blocked_workers": true,
+  "uses_existing_dependencies": true,
+  "fresh_dependency_install": false,
+  "verified": [
+    {
+      "run": "runs/extension/attack_development_v2/20261112T182249706134Z",
+      "completed": 35,
+      "planned": 35,
+      "requests": 127,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/author_baselines_development/20261112T183354104461Z",
+      "completed": 24,
+      "planned": 24,
+      "requests": 89,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/banking_control/20261112T182345061458Z",
+      "completed": 162,
+      "planned": 162,
+      "requests": 586,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/parameter_confirmation/20261113T040244929913Z",
+      "completed": 45,
+      "planned": 45,
+      "requests": 149,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/parameter_development/20261113T040032581555Z",
+      "completed": 10,
+      "planned": 10,
+      "requests": 25,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/routing_development/20261112T182618124693Z",
+      "completed": 10,
+      "planned": 10,
+      "requests": 36,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/slack_development/20261112T182849718021Z",
+      "completed": 23,
+      "planned": 23,
+      "requests": 87,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/travel_budget_continuation/20261113T041742131646Z",
+      "completed": 9,
+      "planned": 9,
+      "requests": 60,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/travel_development/20261113T040157046862Z",
+      "completed": 17,
+      "planned": 17,
+      "requests": 65,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/travel_formal/20261113T040431797526Z",
+      "completed": 72,
+      "planned": 81,
+      "requests": 376,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/workspace_budget_continuation/20261112T212017158188Z",
+      "completed": 29,
+      "planned": 29,
+      "requests": 142,
+      "audit_available": true
+    },
+    {
+      "run": "runs/extension/workspace_formal/20261112T183027899385Z",
+      "completed": 151,
+      "planned": 180,
+      "requests": 637,
+      "audit_available": true
+    }
+  ],
+  "technical_attempts_not_replayed": [
+    {
+      "run": "runs/extension/attack_development/20261112T182014700449Z",
+      "completed": 0,
+      "planned": 35,
+      "requests": 1,
+      "audit_available": false
+    },
+    {
+      "run": "runs/extension/attack_development/20261112T182131493624Z",
+      "completed": 0,
+      "planned": 35,
+      "requests": 2,
+      "audit_available": false
+    },
+    {
+      "run": "runs/extension/parameter_development/20261113T040002111101Z",
+      "completed": 0,
+      "planned": 10,
+      "requests": 1,
+      "audit_available": false
+    }
+  ]
+}

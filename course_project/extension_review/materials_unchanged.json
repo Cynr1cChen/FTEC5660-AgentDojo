@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "artifacts": {
+    "output/pdf/FTEC5660_AgentDojo_Report.pdf": "18b125453358aa893f97a6251ffdbf918e02574eefe156e108453670992f8e05",
+    "output/pptx/FTEC5660_AgentDojo_Presentation.pptx": "de1da3d751cbcd1ca91a664e0361eddc8d58dc49da62eecded6c794e67508f4b",
+    "output/pdf/FTEC5660_AgentDojo_\u4e2d\u6587\u8bb2\u89e3\u7a3f.pdf": "2cacb99845a8c412c6fdb58c87e4b25b260bbb967bf85a4f30e3a7d96ba1b56d"
+  }
+}

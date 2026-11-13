@@ -22,7 +22,7 @@ def build():
 def verify():
  m=read(ARCHIVE.with_suffix('.manifest.json'));assert sha(ARCHIVE)==m['sha256']
  with tempfile.TemporaryDirectory(prefix='agentdojo_extension_package_') as td:
-  root=Path(td)
+  root=Path(td).resolve()
   with zipfile.ZipFile(ARCHIVE) as z:
    assert set(z.namelist())==set(m['paths'])
    for name in z.namelist():

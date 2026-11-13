@@ -23,12 +23,14 @@ def aggregate(name,dirs):
  return arms
 if __name__=='__main__':
  import sys
- name=sys.argv[1];names=['workspace_formal','workspace_budget_continuation'] if name=='workspace_merged' else [name]
+ name=sys.argv[1];merged={'workspace_merged':['workspace_formal','workspace_budget_continuation'],'travel_merged':['travel_formal','travel_budget_continuation']};names=merged.get(name,[name])
  dirs=[sorted((ROOT/'runs/extension'/n).iterdir())[-1] for n in names]
- if name=='workspace_merged':
-  parent=read(ROOT/'course_project/extension/workspace_formal/protocol.json');cont=read(ROOT/'course_project/extension/workspace_budget_continuation/protocol.json')
-  assert cont['parent_protocol_sha256']==sha(ROOT/'course_project/extension/workspace_formal/protocol.json') and cont['schedule']==parent['schedule'][151:]
+ if name in merged:
+  parent=read(ROOT/f'course_project/extension/{names[0]}/protocol.json');cont=read(ROOT/f'course_project/extension/{names[1]}/protocol.json')
+  assert cont['parent_protocol_sha256']==sha(ROOT/f'course_project/extension/{names[0]}/protocol.json') and cont['schedule']==parent['schedule'][cont['original_index_offset']:]
   rs=[r for d in dirs for r in read(d/'audit.json')['rows']]
   keys=[tuple(r.get(k) for k in ['trial','task','phase','arm','attack','goal']) for r in rs]
-  assert len(keys)==len(set(keys))==len(parent['schedule'])==180
+  assert len(keys)==len(set(keys))==len(parent['schedule'])
+  assert all(all(r[k]==v for k,v in c.items()) for r,c in zip(rs,parent['schedule']))
+  assert all(parent['payloads'][str(int(i)+cont['original_index_offset'])]==v for i,v in cont['payloads'].items())
  print(json.dumps(aggregate(name,dirs),indent=2))

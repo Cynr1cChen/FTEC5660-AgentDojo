@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-11-13T04:11:16.355161+00:00",
+  "notes": [
+    "First parameter attempt: sandbox APIConnectionError; no returned answer; conservative reservation retained. Identical frozen protocol restarted with networking; no outcome retry.",
+    "Workspace continuation replay initially failed because Calendar.create_event creates list(set(participants)). Offline wrapper verifies identical members then restores recorded ordering. It does not change original actors, requests or results.",
+    "Travel replay initially failed on wall-clock email timestamps. Offline clock reconstruction extended from Workspace to Travel; original actors unchanged. Final developer replay receipt followed formal launch preparation; initial shell did not stop on replay error. No scientific condition changed, and formal records will all be replayed before acceptance.",
+    "Gate-denied calls do not execute native FunctionsRuntime; offline verifier excludes those synthetic error results from its native-execution cursor, while still checking exact model wire requests, reconstructed gate decisions and states.",
+    "Original raw payload exposure on four bill cases is false because templates render literal backslash-n/backslash-t; separate exact rendered-escape diagnostic confirms all eight parameter payloads were read. Original fields unchanged.",
+    "No report/PPT/script edits; output artifact hashes checked against original delivery receipt.",
+    "All stage-level and cumulative budgets use conservative no-cache peak token rates even though paid calls start in the verified off-peak period."
+  ],
+  "stop_boundary": "Research acceptance before report/deck authoring; no publication or submission."
+}

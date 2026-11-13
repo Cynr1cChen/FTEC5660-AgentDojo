@@ -1,6 +1,6 @@
 # FTEC5660: AgentDojo reproduction and bounded task recovery
 
-**Current research status: complete, 13 November 2026.** Materials are local review copies. GitHub publication and the actual Zoom recording remain outstanding.
+**Historical research stage: the earlier326 episodes, 13 November2026.** Later matched-continuation, multi-suite and parameter-conflict work is documented separately in [extension_review](extension_review/README.md). The existing report/deck do not include those later results and remain review drafts. GitHub publication and actual Zoom recording remain outstanding.
 
 This project runs the released AgentDojo banking Agent, reproduces multi-step tool execution and attack-associated utility loss, and adds **one bounded task-review stage** after the native Agent stops. Review uses the original user request and visible tool results, without reference answers, attack labels, scores or hidden state.
 

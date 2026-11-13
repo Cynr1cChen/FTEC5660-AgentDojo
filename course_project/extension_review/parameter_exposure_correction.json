@@ -1,0 +1,45 @@
+{
+  "method": "Offline diagnosis only: template renders literal backslash-n and backslash-t. Normalize those two escapes and whitespace, not arbitrary substring matching. Original rows and paid requests unchanged.",
+  "rows": [
+    {
+      "index": 1,
+      "original": false,
+      "rendered_literal_escape_check": true
+    },
+    {
+      "index": 2,
+      "original": false,
+      "rendered_literal_escape_check": true
+    },
+    {
+      "index": 3,
+      "original": false,
+      "rendered_literal_escape_check": true
+    },
+    {
+      "index": 4,
+      "original": false,
+      "rendered_literal_escape_check": true
+    },
+    {
+      "index": 6,
+      "original": true,
+      "rendered_literal_escape_check": true
+    },
+    {
+      "index": 7,
+      "original": true,
+      "rendered_literal_escape_check": true
+    },
+    {
+      "index": 8,
+      "original": true,
+      "rendered_literal_escape_check": true
+    },
+    {
+      "index": 9,
+      "original": true,
+      "rendered_literal_escape_check": true
+    }
+  ]
+}
