@@ -13,9 +13,9 @@
 
 ## 2. 统一论点与叙事
 
-建议统一英文标题：**Reproducing AgentDojo: Task Recovery and Authorization Trade-offs**。
+建议统一英文标题：**Beyond Attack Rejection: Task Completion in AgentDojo**。
 
-中文含义：AgentDojo复现中的任务恢复与授权约束取舍。
+中文含义：超越攻击拒绝：AgentDojo中的任务完成。
 
 核心论点：有边界任务复核改善了所测银行任务的完成；场景扩展和授权实验显示，成功阻止恶意目标、完成被允许的操作、保留真实用户授权，必须分别测量。通过有限迭代解释收益、失效及代价，构成研究闭环。
 
@@ -60,7 +60,7 @@
 
 | 页 | 建议英文标题 | 内容与视觉组织 | 原结构对应 |
 |---|---|---|---|
-| 1 | Reproducing AgentDojo | 简洁封面，呈现研究题目与核心问题；保留模板几何装饰，以专属Agent视觉形成识别度 | 原1 |
+| 1 | Beyond Attack Rejection: Task Completion in AgentDojo | 简洁封面，呈现研究题目与核心问题；保留模板几何装饰，以专属Agent视觉形成识别度 | 原1 |
 | 2 | A refund, an injection and an unfinished task | 将退款案例直接嵌入系统流程：用户请求、Agent、工具数据、状态修改；用可视化信任边界说明注入位置 | 原2–3 |
 | 3 | Reproduction design and evaluation | 一个紧凑实验矩阵加指标示意，说明模型/版本、六题三组三轮、正常完成/ASR/严格安全完成；评分审查用一个代表例子 | 原4–5 |
 | 4 | Bounded task review | 大幅方法流程，显示原流程停机、新增复核和剩余工具预算；配一段真实轨迹摘要解释继续完成合法工作 | 原6 |

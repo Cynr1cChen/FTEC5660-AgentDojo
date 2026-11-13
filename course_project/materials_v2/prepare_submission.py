@@ -46,7 +46,7 @@ def main():
     blank_identity=all(not f.get('/V') for f in fields.values())
     assert blank_identity,'Record the filled identity status before packaging a changed report.'
     text_template='''FTEC5660 Individual Reproducibility Project
-Reproducing AgentDojo: Task Recovery and Authorization Trade-offs
+Beyond Attack Rejection: Task Completion in AgentDojo
 
 Name: [FILL IN]
 Student ID: [FILL IN]

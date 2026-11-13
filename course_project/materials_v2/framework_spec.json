@@ -1,7 +1,7 @@
 {
   "created_utc": "2026-11-13T10:39:19.911925+00:00",
   "status": "authored_and_validated",
-  "title": "Reproducing AgentDojo: Task Recovery and Authorization Trade-offs",
+  "title": "Beyond Attack Rejection: Task Completion in AgentDojo",
   "report_max_pages": 10,
   "report_language": "English",
   "deck_language": "English",
@@ -22,7 +22,7 @@
   "main_slides": [
     {
       "slide": 1,
-      "title": "Reproducing AgentDojo",
+      "title": "Beyond Attack Rejection: Task Completion in AgentDojo",
       "internal_planning_seconds": 25,
       "previous_slides": [
         1

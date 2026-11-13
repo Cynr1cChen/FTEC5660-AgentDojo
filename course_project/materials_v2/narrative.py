@@ -11,8 +11,8 @@ pc=lambda v:f'{100*v:.2f}%'
 main_rate=lambda a:pc(F['main'][a]['safe']['mean'])
 neutral_count=lambda a:F['neutral'][a]['attacked']['strict_safe']['count']
 
-TITLE='Reproducing AgentDojo'
-SUBTITLE='Task Recovery and Authorization Trade-offs'
+TITLE='Beyond Attack Rejection'
+SUBTITLE='Task Completion in AgentDojo'
 
 # Blocks: p=paragraph, h=section heading, fig/data/diagram=builder-owned evidence.
 REPORT=[

@@ -1,7 +1,7 @@
 [
   {
     "slide": 1,
-    "title": "Reproducing AgentDojo",
+    "title": "Beyond Attack Rejection: Task Completion in AgentDojo",
     "english": "Hello Professor, and thank you for watching my presentation. For this individual project, I reproduced AgentDojo, a framework for testing tool-using agents under prompt injection, and investigated whether an agent can reject an attack while still completing the user's task.\n\nI'll first explain the system and my bounded-review modification, then walk through the banking results and tests in other scenarios. I'll finish with the authorization experiments and what they reveal about the balance between protection and useful completion.\n\nTo introduce the problem, imagine asking an assistant to refund a payment. It notices a malicious instruction hidden in the transaction record and refuses it, which sounds like a successful defense. But then it stops, and your refund never happens. That gap is where this study begins.",
     "chinese": "教授您好，感谢您观看我的展示。这次个人项目中，我复现了AgentDojo，一个用于测试工具型Agent应对提示注入的框架，并研究Agent能否在拒绝攻击的同时，继续完成用户真正要求的任务。\n\n接下来，我会先介绍系统以及加入的有边界复核，再讲解银行实验的结果和其他场景中的测试。最后，我会介绍授权实验，说明这些结果怎样帮助我们理解安全保护与有效任务完成之间的取舍。\n\n为了引出这个问题，我们先设想一个情境：你让助手退回一笔款项，它发现交易记录里藏着恶意指令，于是拒绝执行。听起来，防御已经成功了。但接下来，它却停住了，你要的退款也没有完成。这个断点，就是这项研究的起点。"
   },

@@ -2,7 +2,7 @@
 
 English main text with Chinese translation
 
-## Slide 1: Reproducing AgentDojo
+## Slide 1: Beyond Attack Rejection: Task Completion in AgentDojo
 
 ### English
 

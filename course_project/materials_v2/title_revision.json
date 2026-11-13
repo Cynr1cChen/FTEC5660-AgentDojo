@@ -1,0 +1,18 @@
+{
+  "title": "Beyond Attack Rejection: Task Completion in AgentDojo",
+  "pdf_checks": {
+    "FTEC5660_AgentDojo_Final_Report.pdf": {
+      "sha256": "2eca0a80a8832a0db9185c22c0cba700890bd546909da04291ff29bcc3bfb282",
+      "pages": 10,
+      "pages_after_first_unchanged": true
+    },
+    "FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf": {
+      "sha256": "c481b86c6440ea4774bae22b24c22444d48f44e448329720e58eb4278cec40b1",
+      "pages": 12,
+      "pages_after_first_unchanged": true
+    }
+  },
+  "user_ppt_unchanged": true,
+  "student_link_text_preserved_except_title": true,
+  "pdf_first_pages_visually_reviewed": true
+}

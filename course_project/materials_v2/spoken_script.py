@@ -5,7 +5,7 @@ def speech(text):
     return dedent(text).strip()
 
 SCRIPT=[
-('Reproducing AgentDojo',speech('''
+('Beyond Attack Rejection: Task Completion in AgentDojo',speech('''
 Hello Professor, and thank you for watching my presentation. For this individual project, I reproduced AgentDojo, a framework for testing tool-using agents under prompt injection, and investigated whether an agent can reject an attack while still completing the user's task.
 
 I'll first explain the system and my bounded-review modification, then walk through the banking results and tests in other scenarios. I'll finish with the authorization experiments and what they reveal about the balance between protection and useful completion.

@@ -1,4 +1,4 @@
-# Reproducing AgentDojo: Task Recovery and Authorization Trade-offs
+# Beyond Attack Rejection: Task Completion in AgentDojo
 
 Name: ______  Student ID: ______
 

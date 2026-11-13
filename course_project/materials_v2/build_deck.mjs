@@ -96,11 +96,11 @@ function img(s,name,file,x,y,w,h){return s.images.add({blob:assets[file],content
 // 01 Cover. Keep the supplied geometry, use a flat explanatory illustration.
 text(cover,'course','Agentic AI for Business and FinTech',87,64,1100,55,28,C.navy);
 text(cover,'project-label','FTEC5660 INDIVIDUAL PROJECT',153,238,1050,54,30,C.gold,true);
-text(cover,'cover-title-line1','Reproducing',150,350,1050,120,96,C.ink,true);
-text(cover,'cover-title-line2','AgentDojo',150,470,1050,120,96,C.ink,true);
+text(cover,'cover-title-line1','Beyond Attack Rejection',150,350,1050,120,74,C.ink,true);
+text(cover,'cover-title-line2','Task Completion',150,470,1050,120,74,C.ink,true);
 text(cover,'identity-name','Name: __________________',153,848,850,48,30,C.ink);
 text(cover,'identity-id','Student ID: ______________',153,911,850,48,30,C.ink);
-text(cover,'subtitle','Task Recovery and\nAuthorization Trade-offs',153,636,1000,140,46,C.navy);
+text(cover,'subtitle','in AgentDojo',153,636,1000,140,46,C.navy);
 img(cover,'Flat illustration of rejecting an injection and completing a refund','cover_flat.png',1115,319,665,665);
 sources(cover,1,['S1','S9'],'Debenedetti et al., AgentDojo v3: '+facts.paper+'\nOriginal cover illustration generated for this project. Visual style reference: user-supplied MEV_Group9.pdf.');
 
