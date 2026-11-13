@@ -6,13 +6,17 @@ def speech(text):
 
 SCRIPT=[
 ('Reproducing AgentDojo',speech('''
-Let me start with a simple situation. You ask an assistant to refund a payment, and it notices a malicious instruction hidden in the transaction record. It refuses that instruction, which sounds like a successful defense. But then it stops, and your refund never happens.
+Hello Professor, and thank you for watching my presentation. For this individual project, I reproduced AgentDojo, a framework for testing tool-using agents under prompt injection, and investigated whether an agent can reject an attack while still completing the user's task.
 
-That gap is what led me to this project. Using AgentDojo, I investigated whether one bounded review could help the agent finish the legitimate task, and then followed the results to understand where that approach breaks down.
+I'll first explain the system and my bounded-review modification, then walk through the banking results and tests in other scenarios. I'll finish with the authorization experiments and what they reveal about the balance between protection and useful completion.
+
+To introduce the problem, imagine asking an assistant to refund a payment. It notices a malicious instruction hidden in the transaction record and refuses it, which sounds like a successful defense. But then it stops, and your refund never happens. That gap is where this study begins.
 '''),speech('''
-我想先从一个很简单的情境说起。你让一个助手退回一笔款项，它发现交易记录里藏着恶意指令，于是拒绝执行。听起来，防御已经成功了。但接下来，它却停住了，你要的退款也没有完成。
+教授您好，感谢您观看我的展示。这次个人项目中，我复现了AgentDojo，一个用于测试工具型Agent应对提示注入的框架，并研究Agent能否在拒绝攻击的同时，继续完成用户真正要求的任务。
 
-正是这个断点，让我开始了这项研究。我以AgentDojo为基础，检验增加一次有边界的复核，能否帮助Agent继续完成合法任务，再沿着实验结果，追问这种做法会在什么地方失效。
+接下来，我会先介绍系统以及加入的有边界复核，再讲解银行实验的结果和其他场景中的测试。最后，我会介绍授权实验，说明这些结果怎样帮助我们理解安全保护与有效任务完成之间的取舍。
+
+为了引出这个问题，我们先设想一个情境：你让助手退回一笔款项，它发现交易记录里藏着恶意指令，于是拒绝执行。听起来，防御已经成功了。但接下来，它却停住了，你要的退款也没有完成。这个断点，就是这项研究的起点。
 ''')),
 ('A refund, an injection and an unfinished task',speech('''
 If we follow the example on the left, the agent finds an incoming ten-euro payment, just as the user requested. The problem is that the same record also tells it to change the recipient of another payment.

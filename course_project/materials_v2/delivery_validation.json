@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-13T13:56:35.319967+00:00",
+  "created_utc": "2026-11-13T14:03:03.953457+00:00",
   "passed": true,
   "deliverables": [
     {
@@ -9,20 +9,20 @@
     },
     {
       "path": "output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx",
-      "sha256": "440f4ca1cd2dc96de71d8807b0afc4300350afa3436ba609d25402561d49bf53",
-      "bytes": 1911073
+      "sha256": "a75af0561e706d620447cd39cd318bde2b8c69890a39cd658082867e0fde3abf",
+      "bytes": 1911467
     },
     {
       "path": "output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf",
-      "sha256": "b174e98b1f8a902c50bca5792ce4d1530cfd47a374e8cfc547e2457e33a34b1a",
-      "bytes": 306407
+      "sha256": "db1fa13fb3ef942ed2fdba8ff841fa4598de4f910eed30fdb86fb6bbcdc7889b",
+      "bytes": 309155
     }
   ],
   "report_pages": 10,
   "presentation_main_slides": 12,
   "presentation_hidden_backup_slides": 3,
   "script_pages": 12,
-  "english_script_words": 1498,
+  "english_script_words": 1541,
   "script_has_target_duration_labels": false,
   "blank_identity_fields_verified": true,
   "native_editable_charts": 4,
@@ -307,7 +307,7 @@
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-1.png",
-        "sha256": "c144bafda666a23b3da96da45d93271206f1f174440359926a003d88a2ba9be4"
+        "sha256": "57dca4fb14a796bd2bab46f918f80dde38288be94562a942d16ec29c99a25442"
       },
       {
         "file": "course_project/materials_v2/build/final/script_pages/page-10.png",
@@ -354,63 +354,63 @@
         "sha256": "cd6879ee4279fce8df95221a6138903c5ec23af3e2d77843aa0da1c0d62e4f42"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-1.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-1.png",
         "sha256": "ad4d472a4db2210112dfc944c144f5d5ebf3cb39b11c1642cd251586fc850336"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-10.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-10.png",
         "sha256": "01eca84d9594991f56ad08ba4afea35ee7b5176ca61ee60098be16f2a81df8b8"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-11.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-11.png",
         "sha256": "d22b62ee92254ac6d21bdc77bbd0a3e1a949d9e4f7958a43eb71842d1cba6156"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-12.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-12.png",
         "sha256": "29fbd2a0d0f55a0da43760e1b4e18add914af4660b13b77cee12dd5bba755ebc"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-13.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-13.png",
         "sha256": "4c99a044a30d883e98945c9b63633abce06802527589ad9bad195ee9de7865b7"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-14.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-14.png",
         "sha256": "1fb635bb3232b3a71a9e94b8187267766dcd1f33a18ed49eaace201964ed1657"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-15.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-15.png",
         "sha256": "326afec5f384a8babfec679088926419249c4a5509f4ddf5918be2c365b4397f"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-2.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-2.png",
         "sha256": "150f7dad77435f76417fb0236e29e686dcb669a93f5fa552473c014f094aabf6"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-3.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-3.png",
         "sha256": "28ffb7f94d3ae5b404accbeec8356ee0053a3ff7b2c36a686f236e82d8c8a9e7"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-4.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-4.png",
         "sha256": "10d4631d62fdb84609ac884db4afe604895a52ea68ae03088a3683e48f329c6a"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-5.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-5.png",
         "sha256": "9bfb5edbc017dce25f7f5483a7d4242b874f2dbf2b4c4b725b0ec4c98ed3583b"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-6.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-6.png",
         "sha256": "ca24a217c6a3596ed52f9fcec39378345242dbc2c14290c330ed48046ff8f658"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-7.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-7.png",
         "sha256": "e7621c89607a15c2d1ae63c2a565f6d38dc8281a78ade6cc468e87c257876daa"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-8.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-8.png",
         "sha256": "68f5acd0ca6ab8efaa21563566ce25c445a8ed7c53ca536bd7c88ce23a51840a"
       },
       {
-        "file": "course_project/materials_v2/build/script_revision/final_previews/slide-9.png",
+        "file": "course_project/materials_v2/build/script_opening2/final_previews/slide-9.png",
         "sha256": "75bce538a74b669f5885532b67209e71857dbc1b57865b6c74db7b81d9991ce6"
       }
     ]

@@ -8,7 +8,7 @@ The research is closed. These materials cover the banking study, matched continu
 - [English presentation, 12 main slides and 3 hidden backups](../../output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx)
 - [Recording script, English with Chinese below](../../output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf)
 
-The spoken script has 1,498 English words. It follows the 12 main slides as a connected spoken narrative, with deliberate paragraph boundaries and transitions between slides. English comes first, followed by Chinese, without target-duration labels. The report has blank fillable name/student-ID fields, and the presentation leaves both identity fields blank. The slide notes include the corresponding English/Chinese script and source pointers.
+The spoken script has 1,541 English words. It follows the 12 main slides as a connected spoken narrative, with deliberate paragraph boundaries and transitions between slides. English comes first, followed by Chinese, without target-duration labels. The report has blank fillable name/student-ID fields, and the presentation leaves both identity fields blank. The slide notes include the corresponding English/Chinese script and source pointers.
 
 The supplied blue geometric template remains the design base. Ordinary explanations use flat educational illustrations inspired by the user's MEV reference. Architecture, execution flow and evidence diagrams use academic conventions and editable native shapes. Four native charts include four embedded data workbooks, and seven tables remain editable. Explanatory text accompanies the visuals where needed.
 

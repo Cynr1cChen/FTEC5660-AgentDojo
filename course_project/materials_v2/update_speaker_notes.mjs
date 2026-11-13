@@ -8,8 +8,9 @@ import {FileBlob,PresentationFile} from '@oai/artifact-tool';
 import JSZip from 'jszip';
 
 const root=process.cwd(),here=path.join(root,'course_project/materials_v2');
-const build=path.join(here,'build/script_revision');
-const source=path.join(build,'before_FTEC5660_AgentDojo_Final_Presentation.pptx');
+const build=path.join(here,'build',process.env.NOTES_REVISION??'script_revision');
+await fs.mkdir(build,{recursive:true});
+const source=process.env.NOTES_REVISION?path.join(root,'output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx'):path.join(build,'before_FTEC5660_AgentDojo_Final_Presentation.pptx');
 const notes=JSON.parse(await fs.readFile(path.join(here,'speaker_notes.json'),'utf8'));
 const p=await PresentationFile.importPptx(await FileBlob.load(source));
 if(p.slides.items.length!==15||notes.length!==12)throw Error('Unexpected slide count');
@@ -54,8 +55,8 @@ const result=await finalizePresentation({workspaceDir:root,candidatePath:candida
 const finalZip=await parts(await JSZip.loadAsync(await fs.readFile(finalPath)));
 if(Object.keys(finalZip).length!==Object.keys(originalHashes).length)throw Error('Package parts added or removed');
 const actualChanged=Object.entries(finalZip).filter(([n,b])=>digest(b)!==originalHashes[n]).map(([n])=>n);
-if(actualChanged.length!==12||!actualChanged.every(n=>changed.includes(n)))throw Error('Unexpected final part changes');
-const receipt={changed_parts:actualChanged,unchanged_parts:preserved.length,
+if(actualChanged.length<1||actualChanged.length>12||!actualChanged.every(n=>changed.includes(n)))throw Error('Unexpected final part changes');
+const receipt={changed_parts:actualChanged,unchanged_parts:Object.keys(originalHashes).length-actualChanged.length,
  all_visible_slide_and_chart_parts_byte_identical:true,notes_only_edit:true,
  source_sha256:digest(await fs.readFile(source)),final_sha256:digest(await fs.readFile(finalPath))};
 await fs.writeFile(path.join(here,'notes_revision.json'),JSON.stringify(receipt,null,2)+'\n');
