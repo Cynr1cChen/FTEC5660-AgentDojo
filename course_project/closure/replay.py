@@ -25,19 +25,31 @@ def worker(directory):
  assert pending==interruption.get('pending_requests',[])
  matched=[read(f) for f in reqfiles if f.name not in pending]
  uses=[json.loads(x) for x in (d/'usage.jsonl').read_text().splitlines()]
- assert len(req)==s['api_calls'] and len(matched)==len(res)==len(uses);known=upper=0;peak_starts=0
+ # SIGINT can leave the adapter's finally-recorded reservation without a
+ # response. Keep it in the ledger, but never invent a response or score.
+ in_usage=0
+ if pending and len(uses)==len(req):
+  actual_uses=[]
+  for f,u in zip(reqfiles,uses):
+   if f.name in pending:
+    assert u['status']=='error' and 'usage' not in u
+    in_usage+=u['estimated_cost_cny']
+   else:actual_uses.append(u)
+  assert abs(in_usage-interruption['reservation_already_in_usage_cny'])<1e-12
+ else:actual_uses=uses
+ assert len(req)==s['api_calls'] and len(matched)==len(res)==len(actual_uses);known=upper=0;peak_starts=0
  for q in req:
   dt=datetime.fromisoformat(q['created_utc']).astimezone(timezone(timedelta(hours=8)));m=dt.hour*60+dt.minute
   is_peak=dt.weekday()<5 and (540<=m<720 or 840<=m<1080);peak_starts+=int(is_peak)
   if is_peak:
    assert not p['offpeak_only'] and p['schedule_authorization']['explicit_user_peak_permission']
    assert p['schedule_authorization']['local_cap_cny']==10 and p['schedule_authorization']['cumulative_cap_cny']==150
- for q,r,u in zip(matched,res,uses):
+ for q,r,u in zip(matched,res,actual_uses):
   usage=r['response']['usage'];assert usage==u['usage'] and u['status']=='ok'
   dt=datetime.fromisoformat(q['created_utc']).astimezone(timezone(timedelta(hours=8)));m=dt.hour*60+dt.minute;factor=2 if dt.weekday()<5 and (540<=m<720 or 840<=m<1080) else 1
   hit=usage.get('prompt_cache_hit_tokens',0);known+=factor*(hit*.02+usage['prompt_tokens']-hit+usage['completion_tokens']*4)/1e6
   cost=(usage['prompt_tokens']*2+usage['completion_tokens']*8)/1e6;assert abs(cost-u['estimated_cost_cny'])<1e-9;upper+=cost
- unknown=interruption.get('unknown_reservation_cny',0)
+ unknown=interruption.get('unknown_reservation_cny',0)+in_usage
  expected_unknown=0
  for f in reqfiles:
   if f.name not in pending:continue
@@ -121,7 +133,7 @@ def worker(directory):
    payloads[key]=t['injections']
    assert row['exposed']==exposure(t)
   rows.append(row)
- out=dict(passed=True,cohort_complete=(s['completed']==p['expected_episodes']),technical_rows=[x for x in s['rows'] if x['status']!='completed'],requests_replayed=sum(x['api_calls'] for x in rows),created_utc=stamp(),network_blocked=True,isolated_archived_source=True,episodes=len(rows),requests=len(req),state_files_verified=len(rows),all_offpeak=not peak_starts,peak_request_starts=peak_starts,known_recorded_period_cny=known,known_offpeak_cny=known if not peak_starts else None,peak_upper_cny=upper+unknown,unknown_reservation_cny=unknown,missing_response_requests=pending,all_attacks_exposed=all(r['exposed'] for r in rows if r['phase']=='attacked'),rows=rows)
+ out=dict(passed=True,cohort_complete=(s['completed']==p['expected_episodes']),technical_rows=[x for x in s['rows'] if x['status']!='completed'],requests_replayed=sum(x['api_calls'] for x in rows),created_utc=stamp(),network_blocked=True,isolated_archived_source=True,episodes=len(rows),requests=len(req),state_files_verified=len(rows),all_offpeak=not peak_starts,peak_request_starts=peak_starts,known_recorded_period_cny=known,known_offpeak_cny=known if not peak_starts else None,peak_upper_cny=upper+unknown,unknown_reservation_cny=unknown,reservation_already_in_usage_cny=in_usage,missing_response_requests=pending,all_attacks_exposed=all(r['exposed'] for r in rows if r['phase']=='attacked'),rows=rows)
  write(d/'audit.json',out);print(json.dumps({k:v for k,v in out.items() if k!='rows'}))
 
 def verify(directory):

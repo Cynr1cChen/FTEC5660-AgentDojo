@@ -6,13 +6,24 @@ from course_project.closure.pipelines import POLICY_SHA256
 from course_project.extension.pipelines import WRITES
 
 def main():
-    d=sorted((ROOT/'runs/closure/shared_policy').iterdir())[-1]
-    audit=read(d/'audit.json');p=read(d/'manifest.json')['protocol']
-    assert audit['passed'] and audit['cohort_complete'] and len(audit['rows'])==48
-    assert p['shared_policy_sha256']==POLICY_SHA256
+    dirs=[sorted((ROOT/'runs/closure'/n).iterdir())[-1] for n in ['shared_policy','shared_policy_continuation']]
+    audits=[read(d/'audit.json') for d in dirs]
+    parent=read(dirs[0]/'manifest.json')['protocol'];cont=read(dirs[1]/'manifest.json')['protocol']
+    assert all(a['passed'] for a in audits) and audits[1]['cohort_complete']
+    assert cont['parent_protocol_sha256']==sha(ROOT/'course_project/closure/shared_policy/protocol.json')
+    assert cont['schedule']==parent['schedule'][cont['original_index_offset']:]
+    assert all(parent['payloads'][str(int(i)+cont['original_index_offset'])]==v for i,v in cont['payloads'].items())
+    assert parent['shared_policy_sha256']==cont['shared_policy_sha256']==POLICY_SHA256
+    records=[(d,a,r) for d,a in zip(dirs,audits) for r in a['rows']]
+    assert len(records)==48
+    assert all(all(r[k]==v for k,v in c.items()) for (_,_,r),c in zip(records,parent['schedule']))
+    keys=[tuple(r.get(k) for k in ['arm','task','trial','phase','attack','goal']) for _,_,r in records]
+    assert len(set(keys))==48
     cases=[]
-    for r in audit['rows']:
+    for d,audit,r in records:
         tr=read(d/r['trace']);events=read(d/f"episodes/{r['index']:03d}/decisions.json")
+        r={**r,'source_run':str(d.relative_to(ROOT)),'source_index':r['index'],
+           'index':r['index']+read(d/'manifest.json')['protocol'].get('original_index_offset',0)}
         tools=[m for m in tr['messages'] if m['role']=='tool']
         denied=[i for i,m in enumerate(tools) if str(m.get('error') or '').startswith('Action not executed:')]
         hard=[e for e in events if e.get('stage')=='anchored_rule' and e['decision']=='deny']
@@ -54,11 +65,11 @@ def main():
         pairs.append(dict(task=a['task'],phase=a['phase'],trial=a['trial'],attack=a.get('attack'),
                           anchored_index=a['index'],aligned_index=b['index'],
                           anchored_safe=a['strict_safe'],aligned_safe=b['strict_safe']))
-    write(ROOT/'course_project/closure/results.json',dict(created_utc=stamp(),completed=True,run=str(d.relative_to(ROOT)),
-        protocol_sha256=sha(ROOT/'course_project/closure/shared_policy/protocol.json'),audit_sha256=sha(d/'audit.json'),
+    write(ROOT/'course_project/closure/results.json',dict(created_utc=stamp(),completed=True,runs=[str(d.relative_to(ROOT)) for d in dirs],
+        protocol_sha256=sha(ROOT/'course_project/closure/shared_policy/protocol.json'),audit_hashes=[sha(d/'audit.json') for d in dirs],
         policy_sha256=POLICY_SHA256,groups=groups,pairs=pairs,rows=cases,
-        counts=dict(episodes=48,requests=audit['requests']),cost=dict(known_period_cny=audit['known_recorded_period_cny'],
-        peak_upper_cny=audit['peak_upper_cny']),notes='One post-hoc candidate on previously observed fixed tasks. Pairs are fresh independent model draws matched by condition/trial, not identical-prefix causal interventions. Primary rent strict metric additionally preserves unspecified date/recurrence; historical rubric separately retained. No component ablation, unseen-task or universal-security claim.',analysis_source_sha256=sha(__file__)))
+        counts=dict(episodes=48,requests=sum(a['requests'] for a in audits)),cost=dict(known_period_cny=sum(a['known_recorded_period_cny'] for a in audits),
+        peak_upper_cny=sum(a['peak_upper_cny'] for a in audits),unknown_reservation_cny=sum(a['unknown_reservation_cny'] for a in audits)),notes='One post-hoc candidate on previously observed fixed tasks. User pause/resume only:14 retained plus34 exact remaining cases. Pairs are fresh independent model draws matched by condition/trial, not identical-prefix causal interventions. Primary rent strict metric additionally preserves unspecified date/recurrence; historical rubric separately retained. No component ablation, unseen-task or universal-security claim.',analysis_source_sha256=sha(__file__)))
     for name,arms in groups.items():
         print(name,{a:{k:(z['count'],z['n']) for k,z in v['metrics'].items()} for a,v in arms.items()})
 

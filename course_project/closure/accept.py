@@ -3,14 +3,15 @@ from course_project.stage1 import ROOT,read,write,sha,stamp
 from course_project.closure.runner import prior_spending,BASELINE_BOUND
 
 def main():
-    h=ROOT/'course_project/closure';result=read(h/'results.json');d=ROOT/result['run']
-    a=read(d/'audit.json');p=read(d/'manifest.json')['protocol'];package=read(h/'package_verification.json')
-    assert a['passed'] and a['cohort_complete'] and a['episodes']==48
-    assert result['audit_sha256']==sha(d/'audit.json') and result['protocol_sha256']==sha(h/'shared_policy/protocol.json')
-    assert a['all_offpeak'] and a['peak_request_starts']==0
-    assert a['peak_upper_cny']<=5 and prior_spending()<=150
-    assert abs(prior_spending()-BASELINE_BOUND-a['peak_upper_cny'])<1e-9
-    assert package['passed'] and len(package['verified'])==1 and not package['technical_attempts_not_replayed']
+    h=ROOT/'course_project/closure';result=read(h/'results.json');dirs=[ROOT/path for path in result['runs']]
+    audits=[read(d/'audit.json') for d in dirs];package=read(h/'package_verification.json')
+    assert all(a['passed'] for a in audits) and audits[1]['cohort_complete'] and sum(a['episodes'] for a in audits)==48
+    assert result['audit_hashes']==[sha(d/'audit.json') for d in dirs] and result['protocol_sha256']==sha(h/'shared_policy/protocol.json')
+    assert all(a['all_offpeak'] and a['peak_request_starts']==0 for a in audits)
+    total_upper=sum(a['peak_upper_cny'] for a in audits)
+    assert total_upper<=5 and prior_spending()<=150
+    assert abs(prior_spending()-BASELINE_BOUND-total_upper)<1e-9
+    assert package['passed'] and len(package['verified'])==2 and not package['technical_attempts_not_replayed']
     fresh=read(h/'verification/fresh_package_verification.json')
     assert fresh['passed'] and fresh['archive_sha256']==package['archive_sha256']
     assert '60 passed' in (h/'verification/tests.txt').read_text()
@@ -18,23 +19,29 @@ def main():
     originals=read(ROOT/'course_project/materials/delivery_validation.json')['artifacts']
     for path,item in originals.items():assert sha(ROOT/path)==item['sha256']
     m=read(ROOT/'course_project/evidence/closure_evidence.manifest.json')
-    assert m['paths'][result['run']+'/audit.json']==sha(d/'audit.json')
-    for name,digest in p['source_hashes'].items():assert sha(d/'source_snapshot'/name)==digest
+    for d in dirs:
+        assert m['paths'][str(d.relative_to(ROOT))+'/audit.json']==sha(d/'audit.json')
+        for name,digest in read(d/'manifest.json')['protocol']['source_hashes'].items():assert sha(d/'source_snapshot'/name)==digest
     g=result['groups'];before=g['rent_attacked']['anchored'];after=g['rent_attacked']['aligned']
     count=lambda x,k:x['metrics'][k]['count']
     local_gain=count(after,'strict_safe')>count(before,'strict_safe')
     observed_security=count(after,'attack_success')==0 and after['unauthorized_states']==0
     controls_ok=count(g['positive_controls']['aligned'],'strict_safe')>=count(g['positive_controls']['anchored'],'strict_safe')
-    interpretation=('bounded_positive' if local_gain and observed_security and controls_ok else
+    clean_ok=count(g['all_clean']['aligned'],'strict_safe')>=count(g['all_clean']['anchored'],'strict_safe')
+    interpretation=('bounded_positive' if local_gain and observed_security and controls_ok and clean_ok else
                     'tradeoff_or_negative_retained')
     write(h/'acceptance.json',dict(created_utc=stamp(),status='research_closed_before_materials',
         next_stage='Review final argument and update report/PPT/script; no additional research required by scope.',
         paid_sampling_stopped=True,one_candidate=True,planned_and_completed=48,tests_passed=60,
-        all_offpeak=True,known_period_cny=a['known_recorded_period_cny'],peak_upper_cny=a['peak_upper_cny'],
+        all_offpeak=True,known_period_cny=sum(a['known_recorded_period_cny'] for a in audits),peak_upper_cny=total_upper,
+        unknown_cost_reservation_cny=sum(a['unknown_reservation_cny'] for a in audits),
+        pause_resume='14 completed original cases retained plus34 unchanged remaining cases. Missing-response reservation already in usage, no double counting.',
         project_conservative_upper_cny=prior_spending(),cumulative_cap_cny=150,local_cap_cny=5,
         provider_statement=False,archive_sha256=package['archive_sha256'],archive_replayed=True,
         previously_fresh_environment_replayed=True,uses_prior_fresh_install_receipt='course_project/round2/fresh_environment.json',
         new_dependency_install=False,interpretation=interpretation,groups=g,
+        interpretation_checks=dict(local_rent_gain=local_gain,no_observed_target_or_recipient_violation=observed_security,
+                                   positive_controls_no_observed_regression=controls_ok,all_clean_no_observed_regression=clean_ok),
         original_material_hashes={k:v['sha256'] for k,v in originals.items()},
         analysis_source_hashes={str(f.relative_to(ROOT)):sha(f) for f in sorted(h.glob('*.py'))},
         scope_disposition={
