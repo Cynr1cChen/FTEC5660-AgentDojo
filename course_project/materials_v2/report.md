@@ -198,4 +198,3 @@ Main-cohort call and latency means appear above. The final 48-run cohort records
 [4] Continuation and sensitivity: course_project/extension_review/banking_control_results.json; banking_prefix.json; sensitivity.json. Transfer and execution-control studies: course_project/round2/.
 
 [5] Final policy, results and provenance: course_project/closure/pipelines.py; shared_policy/protocol.json; results.json; action_audit.json; wire_review.json. Evidence ledger: course_project/materials_v2/evidence_ledger.json.
-

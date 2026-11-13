@@ -245,7 +245,7 @@ def build_report():
     if len(reader.pages)!=10:raise ValueError(f'Report must have 10 pages, found {len(reader.pages)}')
     assert reader.get_fields() and set(reader.get_fields())=={'student_name','student_id'}
     for field in reader.get_fields().values():assert not field.get('/V')
-    (HERE/'report.md').write_text('\n'.join(md)+'\n')
+    (HERE/'report.md').write_text('\n'.join(md).rstrip()+'\n')
     return path
 
 def split_speech(text):
@@ -272,7 +272,7 @@ def build_script():
     doc.build(story,onFirstPage=cb,onLaterPages=cb)
     r=PdfReader(path)
     assert len(r.pages)==12,len(r.pages)
-    (HERE/'recording_script_EN_CN.md').write_text('\n'.join(md)+'\n')
+    (HERE/'recording_script_EN_CN.md').write_text('\n'.join(md).rstrip()+'\n')
     (HERE/'speaker_notes.json').write_text(json.dumps(notes,indent=2,ensure_ascii=False)+'\n')
     return path
 
