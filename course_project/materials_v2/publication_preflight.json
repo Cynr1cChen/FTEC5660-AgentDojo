@@ -8,10 +8,16 @@
   "issues": [],
   "large_files": [],
   "expanded_upstream_history_scan": {
-    "head": "433598dfdcd53dcfee1d1def6efbc58c9b7a6c16",
+    "head": "a556c27b6084d50d64dcec700ad875ca59268e08",
     "blobs_checked": 50618,
     "bytes_checked": 671694451,
     "issues": [],
     "shallow_repository": false
+  },
+  "anonymized_history_scan": {
+    "blobs_checked": 50630,
+    "archives_checked": 30,
+    "secret_or_identity_hits": [],
+    "zoom_credentials_not_present": true
   }
 }

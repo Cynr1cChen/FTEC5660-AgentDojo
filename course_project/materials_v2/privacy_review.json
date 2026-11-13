@@ -4,5 +4,11 @@
   "changed_pptx_part": "ppt/slides/slide1.xml",
   "presentation_pages_after_first_unchanged": true,
   "recording_access_details_not_in_repository": true,
-  "historical_public_versions_require_cleanup": true
+  "historical_public_versions_require_cleanup": false,
+  "public_branch_history_anonymized": true,
+  "rewritten_commits": 5,
+  "private_local_history_backup_retained": true,
+  "public_pptx_structural_and_chart_validation_passed": true,
+  "chart_cache_serialization_aligned_with_workbook": true,
+  "chart_cache_difference_below": 1e-14
 }

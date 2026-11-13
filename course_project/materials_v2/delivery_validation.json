@@ -9,8 +9,8 @@
     },
     {
       "path": "output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx",
-      "sha256": "81aca172fa533432e8b9ea4e6d70384867b8a3c6c3208c59025ef6129daa4229",
-      "bytes": 1914193
+      "sha256": "c852ca5cba7b79916b8917def280973b1e7797f5180b357fa172615dd73709fb",
+      "bytes": 1914174
     },
     {
       "path": "output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf",
@@ -468,5 +468,6 @@
     "report_identity_scope": "Private local submission only; public report and slides are anonymous."
   },
   "public_materials_anonymous": true,
-  "private_submission_identity_completed": true
+  "private_submission_identity_completed": true,
+  "public_privacy_review_receipt": "course_project/materials_v2/privacy_review.json"
 }

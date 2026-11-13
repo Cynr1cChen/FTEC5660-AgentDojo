@@ -2,17 +2,17 @@
   "url": "https://github.com/Cynr1cChen/FTEC5660-AgentDojo",
   "visibility": "public",
   "default_branch": "course-project",
-  "verified_remote_head": "d2986e365bf7c6c21b51d06b9de74772cfd7139a",
+  "verified_remote_head": "30bfdcd2d9a9686ab4ef54f357daa46e4894730a",
   "anonymous_access_verified": true,
   "files_verified": [
     {
       "path": "README.md",
-      "git_blob_sha": "6b02a3e13170ed3f8100a114a567a39e0cb5241f",
+      "git_blob_sha": "404b171c83e1e80d3b560a02c0c27230ce281ac1",
       "anonymous_access": true
     },
     {
       "path": "course_project/README.md",
-      "git_blob_sha": "a2c6fad4d36274974e9a9c267b1917765ab3e052",
+      "git_blob_sha": "1e8fc8935370a4e56d73cd11cc217e145bacda8e",
       "anonymous_access": true
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "path": "output/pdf/FTEC5660_AgentDojo_Final_Presentation.pdf",
-      "git_blob_sha": "3e0c5f5f548beca49e42e28bff5f7710e1de4c19",
+      "git_blob_sha": "b9f0374b0be6438edf399188eb220be4830f3d9b",
       "anonymous_access": true
     },
     {
@@ -47,5 +47,7 @@
     }
   ],
   "original_license_retained": true,
-  "blackboard_submission_performed": false
+  "blackboard_submission_performed": false,
+  "public_materials_anonymous": true,
+  "public_branch_history_anonymized": true
 }
