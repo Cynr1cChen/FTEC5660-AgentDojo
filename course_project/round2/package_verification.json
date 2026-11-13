@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "created_utc": "2026-11-13T08:33:24.182889+00:00",
+  "archive_sha256": "e58e1f383e4fbb414c5bce1db49c635210e27caf9a9fd0c2e0e65bc9d4cb8a9d",
+  "isolated_extract": true,
+  "network_blocked_workers": true,
+  "uses_existing_dependencies": true,
+  "fresh_dependency_install": false,
+  "verified": [
+    {
+      "run": "runs/round2/anchored_continuation/20261113T082421239076Z",
+      "completed": 60,
+      "planned": 60,
+      "requests": 225,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/anchored_development/20261113T050454814700Z",
+      "completed": 18,
+      "planned": 18,
+      "requests": 71,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/anchored_formal/20261113T050828016504Z",
+      "completed": 93,
+      "planned": 153,
+      "requests": 343,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/anchored_positive_controls/20261113T051225603609Z",
+      "completed": 27,
+      "planned": 27,
+      "requests": 119,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/contract_development/20261113T043726678174Z",
+      "completed": 2,
+      "planned": 18,
+      "requests": 9,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/contract_development_v2/20261113T043850127197Z",
+      "completed": 18,
+      "planned": 18,
+      "requests": 65,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/contract_development_v3/20261113T044122872941Z",
+      "completed": 18,
+      "planned": 18,
+      "requests": 70,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/contract_development_v4/20261113T044336116513Z",
+      "completed": 18,
+      "planned": 18,
+      "requests": 67,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/contract_formal/20261113T044700805459Z",
+      "completed": 153,
+      "planned": 153,
+      "requests": 565,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/slack_broader/20261113T043430313227Z",
+      "completed": 108,
+      "planned": 108,
+      "requests": 584,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/travel_broader/20261113T043433958941Z",
+      "completed": 81,
+      "planned": 81,
+      "requests": 402,
+      "audit_available": true
+    },
+    {
+      "run": "runs/round2/travel_output_followup/20261113T045402276012Z",
+      "completed": 81,
+      "planned": 81,
+      "requests": 398,
+      "audit_available": true
+    }
+  ],
+  "technical_attempts_not_replayed": []
+}

@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-11-13T08:27:47.750055+00:00",
+  "fresh_virtual_environment": true,
+  "installation": "uv pip install --offline --python <fresh-env>/bin/python -r course_project/requirements.lock.txt",
+  "uses_local_package_cache": true,
+  "fresh_download": false,
+  "python": "3.12.14",
+  "platform": "macOS arm64",
+  "requirements_sha256": "176f458df943547dfc1638fee740d563a8d1fd32bad112e8ecd94532a04fee14",
+  "tests_passed": 55,
+  "earlier326_replayed": true,
+  "earlier587_replayed": true,
+  "round2_archive_replayed": true,
+  "log_hashes": {
+    "fresh_install.log": "8f318fa20787dcdc1d86f25febde3559242c195343632bbb996d77b2b1390a9b",
+    "fresh_tests.log": "8edb425deb3fdc8e2c20635f4bb137c4ff32055cd060da10ef42f34369e17069",
+    "historical_replay.log": "3289a9363faba410ffa9e9a4baa42c1b46d36e41c91d1ec267ed55a5b59884d5",
+    "fresh_historical_replay.log": "2e36e4c8eddc81d5aebf790bce8767360299f3fb4f4cd94981683454752d2347",
+    "fresh_extension_replay.log": "d91abd824e2a02903884e5a9528cb4cb0288350d35f83eb0dddc61f66681e14a",
+    "tests_final.log": "1730813cb396d4d8c82afface8db38875bfcbad7e08ca1f2290a9536391e173f",
+    "fresh_round2_package_verification.json": "05bdb0a5903b33829e32731178bd3a0408b8523862c515067a060472fe26f392",
+    "fresh_round2_replay.log": "d91abd824e2a02903884e5a9528cb4cb0288350d35f83eb0dddc61f66681e14a",
+    "round2_archive_replay.log": "d91abd824e2a02903884e5a9528cb4cb0288350d35f83eb0dddc61f66681e14a"
+  },
+  "historical_verifier_correction": "Old verifier copied live adapter and rejected its later authorized budget extension. It now restores each historical run's exact hashed source before replay. Original archives, protocols, request/response records and scores unchanged.",
+  "round2_archive_sha256": "e58e1f383e4fbb414c5bce1db49c635210e27caf9a9fd0c2e0e65bc9d4cb8a9d",
+  "completed_utc": "2026-11-13T08:36:00.894323+00:00"
+}

@@ -1,0 +1,5 @@
+/var/folders/_7/9yfnx20j4xldq3w3j1j77m8m0000gn/T/agentdojo_replay_e9hqk082/checkout/src/agentdojo/agent_pipeline/basic_elements.py:22: UserWarning: The query is not being added as the first message or after the system message
+  warnings.warn("The query is not being added as the first message or after the system message")
+/var/folders/_7/9yfnx20j4xldq3w3j1j77m8m0000gn/T/agentdojo_replay_e9hqk082/checkout/src/agentdojo/agent_pipeline/basic_elements.py:22: UserWarning: The query is not being added as the first message or after the system message
+  warnings.warn("The query is not being added as the first message or after the system message")
+Isolated saved-evidence verification passed; no paid API calls.

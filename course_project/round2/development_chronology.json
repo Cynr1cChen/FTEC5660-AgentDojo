@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-11-13T04:48:52.500469+00:00",
+  "versions": [
+    {
+      "name": "contract_development",
+      "meaning": "Technical stop: model omitted empty exact object; no successful contract case, old attempt retained."
+    },
+    {
+      "name": "contract_development_v2",
+      "meaning": "Accept absent exact as empty. Exposed numeric-string equality false blocks and overly literal address equality; 18 cases retained."
+    },
+    {
+      "name": "contract_development_v3",
+      "meaning": "Generic permission-aware denial feedback. Same data, not independent confirmation; retained."
+    },
+    {
+      "name": "contract_development_v4",
+      "meaning": "Typed numeric identity/scalar constraints; descriptive text uses field scope; final candidate before formal sampling. Positive address/password/explicit-recipient/refund controls pass."
+    }
+  ],
+  "scope": "Iterative development, not preregistered empirical efficacy or proof of unseen-task generalization. Earlier styles/results cannot be pooled with final formal results.",
+  "source_dependency_correction": "Early round2 source list omitted legacy extension modules. Attached separately from clean prelaunch tracked commit62713c41 with explicit retrospective manifests; original snapshot hashes preserved. Later formal snapshots prospectively include those modules.",
+  "policy_limitations": [
+    "Contract compiler can misunderstand negation, conditional instructions and multiple accounts; literal presence alone is not semantic authorization.",
+    "Hard existing-recipient rule deliberately requires trusted account literal. Delegated recipient changes may require user confirmation.",
+    "Only structural fields and explicit identity/scalar values constrained; body/address semantic correctness and source authenticity are not guaranteed.",
+    "Read URLs are not restricted by this write contract. No phishing-navigation prevention claim."
+  ],
+  "later_events": [
+    {
+      "name": "contract_formal",
+      "protocol_created_utc": "2026-11-13T04:46:57.222715+00:00"
+    },
+    {
+      "name": "travel_output_followup",
+      "protocol_created_utc": "2026-11-13T04:53:58.690958+00:00"
+    },
+    {
+      "name": "anchored_development",
+      "protocol_created_utc": "2026-11-13T05:04:53.423781+00:00"
+    },
+    {
+      "name": "anchored_formal",
+      "protocol_created_utc": "2026-11-13T05:08:03.643834+00:00"
+    },
+    {
+      "name": "anchored_positive_controls",
+      "protocol_created_utc": "2026-11-13T05:12:19.129578+00:00"
+    },
+    {
+      "name": "anchored_continuation",
+      "protocol_created_utc": "2026-11-13T08:24:06.602640+00:00"
+    }
+  ],
+  "later_interpretation": "Output selection was proposed after Travel answer-replacement losses. Narrow anchored rule was proposed after observing permission-compiler false blocks during formal sampling. Both are post-hoc candidates on already observed task families. All original cohorts retained.",
+  "interruption": "93 completed cases retained; process absent on session resume, cause unestablished. One missing response reserved at0.027492CNY; exact remaining60-case schedule continued with explicit peak10/cumulative150 authorization."
+}

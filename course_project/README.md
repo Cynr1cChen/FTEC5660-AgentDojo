@@ -1,6 +1,6 @@
 # FTEC5660: AgentDojo reproduction and bounded task recovery
 
-**Historical research stage: the earlier326 episodes, 13 November2026.** Later matched-continuation, multi-suite and parameter-conflict work is documented separately in [extension_review](extension_review/README.md). The existing report/deck do not include those later results and remain review drafts. GitHub publication and actual Zoom recording remain outstanding.
+**Read the latest research status first: [round2 research acceptance](round2/RESEARCH_ACCEPTANCE_20261113.md).** This page below describes the historical326-episode stage. The first extension is in [extension_review](extension_review/README.md); broader Slack/Travel tests, output-selection failures and sensitive-parameter interception candidates are in [round2](round2/README.md). Existing report/deck/script files cover the earlier stage and have not been updated. GitHub publication and actual Zoom recording remain outstanding.
 
 This project runs the released AgentDojo banking Agent, reproduces multi-step tool execution and attack-associated utility loss, and adds **one bounded task-review stage** after the native Agent stops. Review uses the original user request and visible tool results, without reference answers, attack labels, scores or hidden state.
 
@@ -50,7 +50,7 @@ uv venv --python 3.12 .venv
 uv pip install --python .venv/bin/python -r course_project/requirements.lock.txt
 ```
 
-Alternatively activate a Python 3.12 virtual environment and run `pip install -r course_project/requirements.lock.txt`. The lock records validated versions. A fresh reinstall or another OS has not been validated.
+Alternatively activate a Python 3.12 virtual environment and run `pip install -r course_project/requirements.lock.txt`. The lock records validated versions. A fresh virtual environment on the same OS has now been validated using an offline package cache; see `round2/fresh_environment.json`. Another OS and fresh network downloads have not been validated.
 
 ## Verify saved evidence without API calls
 
@@ -101,7 +101,7 @@ Fresh samples go to timestamped `runs/rerun/` directories. Original study files 
 
 New runs total approximately **0.8621 CNY** at recorded low-period/cache rates; no-cache peak-rate bound **5.5254 CNY**. Including prior A-Mem and old AgentDojo accounting, the conservative project bound is **76.4827 CNY**. These usage estimates are distinct from a provider account statement.
 
-Original exploratory cohorts remain separate. Older plans and reading guides describe historical stages. This README and formal result files own current status.
+Original exploratory cohorts remain separate. The figures and100CNY rerun limit above describe the historical stage. Latest research and explicitly authorized150CNY accounting are owned by round2/acceptance.json; old paid rerun commands retain their original limits. Do not pool these distinct experimental protocols.
 
 ## Primary references
 
