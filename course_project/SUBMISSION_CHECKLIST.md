@@ -4,7 +4,7 @@
 
 已核对课程原始说明第2–3页，并由用户确认Blackboard页面布局：**文件区上传报告PDF，文本区填写学生GitHub与Zoom录像两个链接**。课程说明未要求单独上传PPT及讲稿；按学生追加要求，文件区也将提交12页主讲版演示文稿PDF。
 
-提交文件夹：`/Users/Admin1/Desktop/Courses/Agentic AI for Business and FinTech/individual project2/FTEC5660_Submission/`。其中01目录是报告和演示文稿PDF附件，02文本模板填写后复制到Blackboard，03目录是录制辅助。归集文件哈希与已验收成品一致；尚未发布仓库、录制或提交Blackboard。
+提交文件夹：`/Users/Admin1/Desktop/Courses/Agentic AI for Business and FinTech/individual project2/FTEC5660_Submission/`。其中01目录是报告和演示文稿PDF附件，02文本模板填写后复制到Blackboard，03目录是录制辅助。归集文件哈希与已验收成品一致；[公开学生仓库](https://github.com/Cynr1cChen/FTEC5660-AgentDojo)已发布并验证无需登录访问；Zoom录制和Blackboard提交待完成。
 
 ## 已完成
 
@@ -20,7 +20,7 @@
 
 1. 填写姓名、学号。报告首页有可填写字段，PPT封面保留空白。
 2. 用英文讲稿试讲，控制Zoom展示不超过15分钟。正常录制只讲12页主讲。
-3. 发布学生GitHub仓库并确认教师可访问，保留作者许可、运行说明、提交历史及实验依据。
+3. 已完成：发布学生GitHub仓库，保留作者许可、运行说明、完整提交历史及实验依据，并验证匿名访问。
 4. 实际录制Zoom，检查视频完整、音画清楚、链接可访问。
 5. 按课程要求提交英文报告、学生GitHub链接及Zoom链接，保存提交回执。
 

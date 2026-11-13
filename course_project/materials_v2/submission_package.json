@@ -19,5 +19,8 @@
     "report_unchanged": true
   },
   "additional_attachment_requested_by_user": "01_Blackboard上传文件/FTEC5660_AgentDojo_Final_Presentation.pdf",
-  "presentation_cover_identity_filled": true
+  "presentation_cover_identity_filled": true,
+  "student_repository_url": "https://github.com/Cynr1cChen/FTEC5660-AgentDojo",
+  "github_publication_complete": true,
+  "github_anonymous_access_verified": true
 }

@@ -417,7 +417,6 @@
   },
   "remaining_user_actions": [
     "Fill name/student ID",
-    "Publish student GitHub repository",
     "Record Zoom presentation",
     "Submit and save receipt"
   ],
@@ -454,5 +453,6 @@
     "exporter": "Bundled LibreOffice headless PDF export",
     "all_12_pages_visually_reviewed": true,
     "user_pptx_modified_by_export": false
-  }
+  },
+  "github_publication_receipt": "course_project/materials_v2/github_publication.json"
 }
