@@ -30,3 +30,9 @@ PDF authoring/validation requires ReportLab, pypdf, pdfplumber, Pillow and the d
 The old report/PPT remain retired at their original paths. The earlier Chinese script and historical builders remain available as historical sources. `framework_checks.json` records the earlier planning stage, and the original research acceptance receipts predate material retirement. Neither is a current-file hash assertion. Use `delivery_validation.json` for the final exports.
 
 Remaining submission actions are filling identity information, publishing the student repository, recording the Zoom presentation and submitting the required files/links. No new research experiment or DeepSeek sampling was performed during material authoring.
+
+## Blackboard submission folder
+
+The user confirmed a file area and a text area in Blackboard. The report PDF belongs in the file area, and the student GitHub and Zoom recording links belong in the text area. The assignment does not separately require the PPTX or script.
+
+`prepare_submission.py` organized unchanged copies at `/Users/Admin1/Desktop/Courses/Agentic AI for Business and FinTech/individual project2/FTEC5660_Submission/`, with an upload directory, a link-text template and recording aids. `submission_package.json` records this handoff. The script refuses to overwrite a nonempty folder, preserving future identity/link edits. `submission_credential_check.json` records a current-tree and evidence-archive pattern scan, separate from the full history check needed before publication. This packaging step did not publish or submit anything.
