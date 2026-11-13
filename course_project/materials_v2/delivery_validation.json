@@ -9,8 +9,8 @@
     },
     {
       "path": "output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx",
-      "sha256": "c419b0d804a57919a3c843e2e65ea6b39ebf71274b50617d1948acb4cb6a8c57",
-      "bytes": 2471569
+      "sha256": "81aca172fa533432e8b9ea4e6d70384867b8a3c6c3208c59025ef6129daa4229",
+      "bytes": 1914193
     },
     {
       "path": "output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf",
@@ -24,7 +24,6 @@
   "script_pages": 12,
   "english_script_words": 1541,
   "script_has_target_duration_labels": false,
-  "blank_identity_fields_verified": true,
   "native_editable_charts": 4,
   "embedded_workbooks": 4,
   "chart_source_checks": [
@@ -416,9 +415,7 @@
     ]
   },
   "remaining_user_actions": [
-    "Fill name/student ID",
-    "Record Zoom presentation",
-    "Submit and save receipt"
+    "Submit the PDFs and completed text in Blackboard and save the receipt"
   ],
   "title_revision": {
     "title": "Beyond Attack Rejection: Task Completion in AgentDojo",
@@ -454,5 +451,22 @@
     "all_12_pages_visually_reviewed": true,
     "user_pptx_modified_by_export": false
   },
-  "github_publication_receipt": "course_project/materials_v2/github_publication.json"
+  "github_publication_receipt": "course_project/materials_v2/github_publication.json",
+  "initial_blank_identity_fields_verified": true,
+  "report_identity_completed": false,
+  "final_submission_review": {
+    "report_pages": 10,
+    "presentation_pdf_pages": 12,
+    "report_body_unchanged": true,
+    "report_field_values_and_appearances_verified": true,
+    "four_archives_reverified_offline": true,
+    "new_paid_model_calls": 0,
+    "recording_access_verified_privately": true,
+    "recording_duration_seconds": 853,
+    "recording_credentials_excluded_from_public_repository": true,
+    "blackboard_submission_performed": false,
+    "report_identity_scope": "Private local submission only; public report and slides are anonymous."
+  },
+  "public_materials_anonymous": true,
+  "private_submission_identity_completed": true
 }

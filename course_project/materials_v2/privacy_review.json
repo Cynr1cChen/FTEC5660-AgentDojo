@@ -1,0 +1,8 @@
+{
+  "public_files_anonymous": true,
+  "private_submission_retains_identity": true,
+  "changed_pptx_part": "ppt/slides/slide1.xml",
+  "presentation_pages_after_first_unchanged": true,
+  "recording_access_details_not_in_repository": true,
+  "historical_public_versions_require_cleanup": true
+}

@@ -9,7 +9,7 @@ The research is closed. These materials cover the banking study, matched continu
 - [English presentation, 12 main slides and 3 hidden backups](../../output/pptx/FTEC5660_AgentDojo_Final_Presentation.pptx)
 - [Recording script, English with Chinese below](../../output/pdf/FTEC5660_AgentDojo_Recording_Script_EN_CN.pdf)
 
-The spoken script has 1,541 English words. It follows the 12 main slides as a connected spoken narrative, with deliberate paragraph boundaries and transitions between slides. English comes first, followed by Chinese, without target-duration labels. The report has blank fillable name/student-ID fields, and the user has filled the presentation cover identity fields. The slide notes include the corresponding English/Chinese script and source pointers.
+The spoken script has 1,541 English words. It follows the 12 main slides as a connected spoken narrative, with deliberate paragraph boundaries and transitions between slides. English comes first, followed by Chinese, without target-duration labels. Public report and presentation files omit the student name and ID. Identified copies are retained only in the local submission folder. The slide notes include the corresponding English/Chinese script and source pointers.
 
 The supplied blue geometric template remains the design base. Ordinary explanations use flat educational illustrations inspired by the user's MEV reference. Architecture, execution flow and evidence diagrams use academic conventions and editable native shapes. Four native charts include four embedded data workbooks, and seven tables remain editable. Explanatory text accompanies the visuals where needed.
 
@@ -31,7 +31,7 @@ PDF authoring/validation requires ReportLab, pypdf, pdfplumber, Pillow and the d
 
 The old report/PPT remain retired at their original paths. The earlier Chinese script and historical builders remain available as historical sources. `framework_checks.json` records the earlier planning stage, and the original research acceptance receipts predate material retirement. Neither is a current-file hash assertion. Use `delivery_validation.json` for the final exports.
 
-The [public student repository](https://github.com/Cynr1cChen/FTEC5660-AgentDojo) is published with the original author attribution and complete history. Anonymous access and key file hashes were verified; see `github_publication.json`. Remaining submission actions are filling report identity information, recording the Zoom presentation and submitting the files/links. No new research experiment or DeepSeek sampling was performed during material authoring.
+The [public student repository](https://github.com/Cynr1cChen/FTEC5660-AgentDojo) is published with the original author attribution and complete history. Anonymous access and key file hashes were verified; see `github_publication.json`. The recording has been completed, and its access details are supplied privately for submission. The remaining action is Blackboard submission and saving the receipt. No new research experiment or DeepSeek sampling was performed during material authoring.
 
 ## Blackboard submission folder
 
